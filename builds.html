@@ -9,89 +9,49 @@
             --bg-color: #050505;
             --glass-bg: rgba(20, 20, 20, 0.6);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --accent: #00f2ff;
+            --accent: #ffffff;
             --sub-text: #888888;
         }
 
-        /* Animation logic matches index.html for consistency */
-        @keyframes PageFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes PageFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: var(--bg-color); color: #ffffff; font-family: 'Inter', sans-serif; }
+        #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+
+        .top-nav { position: fixed; top: 2rem; right: 2rem; display: flex; gap: 1rem; z-index: 100; animation: PageFadeIn 1.2s ease; }
+        .nav-item { text-decoration: none; color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; font-weight: 700; padding: 0.6rem 1.2rem; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); transition: 0.3s; text-transform: uppercase; }
+        .nav-item.active { color: #fff; border-color: rgba(255, 255, 255, 0.4); }
+
+        .container { display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 6rem 2rem; position: relative; z-index: 10; box-sizing: border-box; }
+        
+        .glass-card { 
+            background: var(--glass-bg); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); 
+            border-radius: 28px; padding: 3rem; width: 100%; max-width: 900px; text-align: center; animation: PageFadeIn 0.8s ease;
         }
 
-        body, html {
-            margin: 0; padding: 0;
-            width: 100%; height: 100%;
-            background-color: var(--bg-color);
-            color: #ffffff;
-            font-family: 'Inter', -apple-system, sans-serif;
-            overflow-x: hidden;
-        }
+        /* --- CATEGORY SELECTOR --- */
+        .category-nav { display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; }
+        .cat-btn { background: none; border: none; color: var(--sub-text); cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; transition: 0.3s; }
+        .cat-btn:hover, .cat-btn.active { color: var(--accent); }
 
-        .top-nav {
-            position: fixed; top: 2rem; right: 2rem;
-            display: flex; gap: 1rem; z-index: 100;
-            animation: PageFadeIn 1.2s ease-out forwards;
-        }
+        /* --- CONTENT SECTIONS --- */
+        .section { display: none; animation: PageFadeIn 0.5s ease forwards; }
+        .section.active { display: block; }
 
-        .nav-item {
-            text-decoration: none; color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8rem; font-weight: 700; padding: 0.6rem 1.2rem;
-            border-radius: 12px; background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border); backdrop-filter: blur(10px);
-            transition: 0.3s ease; text-transform: uppercase; letter-spacing: 1px;
-        }
+        /* --- GRID STYLES --- */
+        .grid { display: grid; gap: 1.5rem; }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } /* 3 per row */
+        
+        .build-item { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border); border-radius: 18px; padding: 1.5rem; transition: 0.3s; text-align: left; }
+        .build-item:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.2); }
+        
+        /* Image Template (Big) */
+        .img-placeholder { width: 100%; aspect-ratio: 16/9; background: rgba(255, 255, 255, 0.05); border-radius: 12px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--sub-text); font-size: 0.8rem; border: 1px dashed var(--glass-border); }
+        
+        h3 { margin: 0 0 0.5rem 0; font-size: 1rem; }
+        p { margin: 0; font-size: 0.8rem; color: var(--sub-text); line-height: 1.5; }
 
-        .nav-item:hover, .nav-item.active {
-            color: #fff; background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        #particle-canvas {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%; z-index: 1; pointer-events: none;
-        }
-
-        .container {
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; padding: 5rem 2rem; position: relative; z-index: 10;
-        }
-
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 3rem; width: 100%; max-width: 800px;
-            text-align: center;
-            animation: PageFadeIn 0.8s ease-out forwards;
-        }
-
-        h1 { font-size: 2.2rem; margin: 0; letter-spacing: -1.5px; }
-        .subtitle { font-size: 0.8rem; color: var(--sub-text); margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 4px; }
-
-        .builds-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem; text-align: left;
-        }
-
-        .build-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--glass-border);
-            padding: 1.5rem; border-radius: 18px;
-            transition: 0.3s ease;
-        }
-
-        .build-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-
-        .build-item h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; color: var(--accent); }
-        .build-item p { margin: 0; font-size: 0.85rem; color: var(--sub-text); line-height: 1.4; }
-        footer { margin-top: 3rem; font-size: 0.7rem; color: var(--sub-text); }
+        footer { margin-top: 4rem; font-size: 0.7rem; color: var(--sub-text); }
     </style>
 </head>
 <body>
@@ -100,77 +60,73 @@
         <a href="builds.html" class="nav-item active">Builds</a>
     </nav>
     <canvas id="particle-canvas"></canvas>
+
     <div class="container">
         <main class="glass-card">
-            <h1>My Builds</h1>
-            <p class="subtitle">Roblox Architecture & Design</p>
-            <div class="builds-grid">
-                <div class="build-item">
-                    <h3>Project Alpha</h3>
-                    <p>High-detail realistic modeling project focusing on lighting and textures.</p>
-                </div>
-                <div class="build-item">
-                    <h3>Cyber City</h3>
-                    <p>Neon-infused low-poly city environment built for a futuristic RPG.</p>
-                </div>
-                <div class="build-item">
-                    <h3>System Interface</h3>
-                    <p>Custom scripted UI panels and interactive menus for game systems.</p>
+            <h1>Portfolio</h1>
+            <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.7rem; color: var(--sub-text); margin-bottom: 2rem;">Roblox Showcases</p>
+
+            <div class="category-nav">
+                <button class="cat-btn active" onclick="showSection('uk')">United Kingdom</button>
+                <button class="cat-btn" onclick="showSection('us')">United States</button>
+                <button class="cat-btn" onclick="showSection('others')">Others</button>
+            </div>
+
+            <div id="uk" class="section active">
+                <div class="grid" style="grid-template-columns: 1fr;">
+                    <div class="build-item">
+                        <div class="img-placeholder">Project Image Here</div>
+                        <h3>UK Project 1</h3>
+                        <p>Description of this large-scale British build goes here.</p>
+                    </div>
+                    <div class="build-item"><div class="img-placeholder">Project Image Here</div><h3>UK Project 2</h3><p>Description...</p></div>
+                    <div class="build-item"><div class="img-placeholder">Project Image Here</div><h3>UK Project 3</h3><p>Description...</p></div>
+                    <div class="build-item"><div class="img-placeholder">Project Image Here</div><h3>UK Project 4</h3><p>Description...</p></div>
+                    <div class="build-item"><div class="img-placeholder">Project Image Here</div><h3>UK Project 5</h3><p>Description...</p></div>
+                    <div class="build-item"><div class="img-placeholder">Project Image Here</div><h3>UK Project 6</h3><p>Description...</p></div>
                 </div>
             </div>
-            <footer>&copy; 2026 • WORK LOG</footer>
+
+            <div id="us" class="section">
+                <div class="grid grid-3">
+                    <div class="build-item"><h3>US Build 1</h3><p>Short info.</p></div>
+                    <div class="build-item"><h3>US Build 2</h3><p>Short info.</p></div>
+                    <div class="build-item"><h3>US Build 3</h3><p>Short info.</p></div>
+                    </div>
+            </div>
+
+            <div id="others" class="section">
+                <div class="grid grid-3">
+                    <div class="build-item"><h3>Other Build 1</h3><p>Short info.</p></div>
+                    <div class="build-item"><h3>Other Build 2</h3><p>Short info.</p></div>
+                    <div class="build-item"><h3>Other Build 3</h3><p>Short info.</p></div>
+                </div>
+            </div>
+
+            <footer>&copy; 2026 • ARCHIVE</footer>
         </main>
     </div>
+
     <script>
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        const mouse = { x: null, y: null };
-        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+        // Simple script to switch sections
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        /* Particle Script (Same) */
+        const canvas = document.getElementById('particle-canvas'); const ctx = canvas.getContext('2d'); let particles = [];
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; init(); }
-        window.addEventListener('resize', resize);
-        resize();
+        window.addEventListener('resize', resize); resize();
         class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.4;
-                this.speedY = (Math.random() - 0.5) * 0.4;
-            }
-            update() {
-                this.x += this.speedX; this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height;
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
-            }
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 1.5 + 0.5; this.speedX = (Math.random() - 0.5) * 0.4; this.speedY = (Math.random() - 0.5) * 0.4; }
+            update() { this.x += this.speedX; this.y += this.speedY; if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width; if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height; }
+            draw() { ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
-        function init() {
-            particles = [];
-            let quantity = (canvas.width * canvas.height) / 10000;
-            for (let i = 0; i < quantity; i++) { particles.push(new Particle()); }
-        }
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update(); particles[i].draw();
-                for (let j = i; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 150) {
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - dist/150)})`;
-                        ctx.lineWidth = 0.5; ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
+        function init() { particles = []; let q = (canvas.width * canvas.height) / 10000; for (let i = 0; i < q; i++) { particles.push(new Particle()); } }
+        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); for (let i = 0; i < particles.length; i++) { particles[i].update(); particles[i].draw(); for (let j = i; j < particles.length; j++) { const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y; const dist = Math.sqrt(dx * dx + dy * dy); if (dist < 150) { ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - dist/150)})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); } } } requestAnimationFrame(animate); }
         animate();
     </script>
 </body>
