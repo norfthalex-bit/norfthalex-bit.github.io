@@ -51,9 +51,9 @@
         }
 
         h1 { font-size: 2.4rem; margin: 0; font-weight: 700; letter-spacing: -1px; }
-        .subtitle { font-size: 0.7rem; color: var(--sub-text); margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 300; }
+        .subtitle { font-size: 0.7rem; color: var(--sub-text); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 300; }
         
-        .contact-section { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-section { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
         .info-box {
             background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border);
             padding: 1.2rem; border-radius: 20px; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -62,7 +62,33 @@
         .info-box:hover { background: rgba(255, 255, 255, 0.05); transform: translateY(-4px); border-color: var(--accent); }
         .label { display: block; font-size: 0.6rem; font-weight: 700; color: var(--sub-text); text-transform: uppercase; margin-bottom: 4px; letter-spacing: 1px; }
         .value { font-size: 1.1rem; font-weight: 500; }
-        footer { margin-top: 3.5rem; font-size: 0.6rem; color: var(--sub-text); opacity: 0.4; letter-spacing: 2px; font-weight: 300; }
+
+        /* ABOUT ME SECTION */
+        .about-section {
+            text-align: left;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+        }
+        .about-title {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--sub-text);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .about-text {
+            font-size: 0.85rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+
+        footer { margin-top: 2.5rem; font-size: 0.6rem; color: var(--sub-text); opacity: 0.4; letter-spacing: 2px; font-weight: 300; }
     </style>
 </head>
 <body>
@@ -71,22 +97,39 @@
         <a href="builds.html" class="nav-item">Builds</a>
     </nav>
     <canvas id="particle-canvas"></canvas>
+    
     <main class="glass-card">
         <h1>Connect</h1>
         <p class="subtitle">Presence</p>
+        
         <div class="contact-section">
-            <!-- PASTE YOUR ROBLOX LINK BELOW -->
             <a href="https://www.roblox.com/users/171666892/profile" target="_blank" class="info-box">
                 <span class="label">Platform</span>
                 <span class="value">Roblox Profile</span>
             </a>
             
-            <div class="info-box"><span class="label">Discord</span><span class="value">@alz.rsq</span></div>
+            <div class="info-box">
+                <span class="label">Discord</span>
+                <span class="value">@alz.rsq</span>
+            </div>
             
-            <a href="mailto:alzswr1@gmail.com" class="info-box"><span class="label">Communication</span><span class="value">Send Email</span></a>
+            <a href="mailto:alzswr1@gmail.com" class="info-box">
+                <span class="label">Communication</span>
+                <span class="value">Send Email</span>
+            </a>
         </div>
+
+        <!-- ABOUT ME SECTION -->
+        <div class="about-section">
+            <span class="about-title">About Me</span>
+            <p class="about-text">
+                Your description goes here. You can write about your experience as a builder, your interests, or what you are currently working on. This box will expand slightly to fit your text.
+            </p>
+        </div>
+
         <footer>TERMINAL v1.0</footer>
     </main>
+
     <script>
         const canvas = document.getElementById('particle-canvas'); const ctx = canvas.getContext('2d'); let particles = [];
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; init(); }
