@@ -33,18 +33,17 @@
         .section { display: none; animation: PageFadeIn 0.5s ease forwards; }
         .section.active { display: block; }
 
-        /* BIG IMAGE TEMPLATE LAYOUT */
         .grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-        .build-item { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--glass-border); border-radius: 24px; padding: 1.5rem; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .build-item { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--glass-border); border-radius: 24px; padding: 1.5rem; transition: 0.4s; }
         .build-item:hover { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-5px); }
         
-        .img-placeholder { width: 100%; aspect-ratio: 16/8; background: rgba(255, 255, 255, 0.03); border-radius: 16px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: var(--sub-text); border: 1px dashed var(--glass-border); font-size: 0.8rem; letter-spacing: 2px; }
+        .img-placeholder { width: 100%; aspect-ratio: 16/8; background: rgba(255, 255, 255, 0.03); border-radius: 16px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: var(--sub-text); border: 1px dashed var(--glass-border); font-size: 0.8rem; font-weight: 300; letter-spacing: 2px; }
         
         h2 { text-align: center; margin: 0 0 0.5rem 0; font-size: 2.2rem; font-weight: 700; letter-spacing: -1px; }
         h3 { margin: 0 0 0.5rem 0; font-size: 1.2rem; font-weight: 500; }
         p.desc { margin: 0; font-size: 0.85rem; color: var(--sub-text); line-height: 1.6; font-weight: 300; }
 
-        footer { text-align: center; margin-top: 5rem; font-size: 0.6rem; color: var(--sub-text); opacity: 0.4; letter-spacing: 3px; }
+        footer { text-align: center; margin-top: 5rem; font-size: 0.6rem; color: var(--sub-text); opacity: 0.4; letter-spacing: 3px; font-weight: 300; }
     </style>
 </head>
 <body>
@@ -65,7 +64,6 @@
                 <button class="cat-btn" onclick="showSection('others')">Others</button>
             </div>
 
-            <!-- US SECTION: 3 Rows down (Big) -->
             <div id="us" class="section active">
                 <div class="grid">
                     <div class="build-item"><div class="img-placeholder">IMAGE_US_01</div><h3>San Francisco District</h3><p class="desc">Detailed urban landscape featuring modern architecture and hilly terrain.</p></div>
@@ -74,7 +72,6 @@
                 </div>
             </div>
 
-            <!-- UK SECTION: 6 rows down (Big) -->
             <div id="uk" class="section">
                 <div class="grid">
                     <div class="build-item"><div class="img-placeholder">IMAGE_UK_01</div><h3>London Underground</h3><p class="desc">Brutalist-inspired subway station with realistic tiling and lighting.</p></div>
@@ -86,7 +83,6 @@
                 </div>
             </div>
 
-            <!-- OTHERS SECTION: 2 rows down (Big) -->
             <div id="others" class="section">
                 <div class="grid">
                     <div class="build-item"><div class="img-placeholder">IMAGE_OTHER_01</div><h3>Cyberpunk Alley</h3><p class="desc">Neon-focused environment showcasing glowing textures and glass.</p></div>
