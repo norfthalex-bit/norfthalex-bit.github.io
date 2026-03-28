@@ -6,74 +6,62 @@
     <title>Connect | Portfolio</title>
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
             --accent: #00f2ff;
         }
 
-        body, html {
+        /* 1. Fix: Background color must be on the HTML, not just body */
+        html {
+            background-color: #050505;
+        }
+
+        body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #0a0a0a; /* Deep dark base for particle contrast */
+            min-height: 100vh;
             color: #ffffff;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             overflow: hidden;
+            background: transparent; /* 2. Fix: Keep body transparent */
         }
 
-        /* Canvas styling to sit behind the card */
+        /* 3. Fix: Ensure Canvas is correctly positioned */
         #particle-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0; /* Behind everything */
+            pointer-events: none; /* Allows mouse to still click buttons through it */
         }
 
-        /* The Glass Container */
         .glass-card {
             position: relative;
-            z-index: 10;
+            z-index: 10; /* Above the dots */
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             padding: 3rem;
             width: 90%;
-            max-width: 450px;
+            max-width: 400px;
             text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
         }
 
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: -1px; }
+        .subtitle { font-size: 0.8rem; opacity: 0.5; margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        .subtitle {
-            font-size: 0.9rem;
-            opacity: 0.6;
-            margin-bottom: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Contact Items */
-        .contact-section {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
+        .contact-section { display: flex; flex-direction: column; gap: 1rem; }
 
         .info-box {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--glass-border);
             padding: 1.2rem;
             border-radius: 16px;
@@ -84,43 +72,20 @@
         }
 
         .info-box:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             transform: translateY(-3px);
             border-color: var(--accent);
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
         }
 
-        .label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: var(--accent);
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
+        .label { display: block; font-size: 0.7rem; font-weight: bold; color: var(--accent); margin-bottom: 4px; text-transform: uppercase; }
+        .value { font-size: 1.1rem; font-weight: 500; }
+        .id-badge { font-size: 0.75rem; opacity: 0.4; margin-top: 4px; display: block; font-family: monospace; }
 
-        .value {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .id-badge {
-            font-size: 0.8rem;
-            opacity: 0.5;
-            margin-top: 4px;
-            display: block;
-            font-family: monospace;
-        }
-
-        footer {
-            margin-top: 2.5rem;
-            font-size: 0.8rem;
-            opacity: 0.4;
-        }
+        footer { margin-top: 2.5rem; font-size: 0.7rem; opacity: 0.3; }
     </style>
 </head>
 <body>
-    <!-- Animated background canvas -->
+    
     <canvas id="particle-canvas"></canvas>
 
     <main class="glass-card">
@@ -128,7 +93,7 @@
         <p class="subtitle">Digital Identity</p>
 
         <div class="contact-section">
-            <a href="https://www.roblox.com/users/YOUR_ID_HERE/profile" target="_blank" class="info-box">
+            <a href="ROBLOX_LINK_HERE" target="_blank" class="info-box">
                 <span class="label">Roblox</span>
                 <span class="value">@Username</span>
                 <span class="id-badge">ID: 123456789</span>
@@ -137,7 +102,7 @@
             <div class="info-box">
                 <span class="label">Discord</span>
                 <span class="value">username_here</span>
-                <span class="id-badge">ID: 987654321012345678</span>
+                <span class="id-badge">ID: 9876543210</span>
             </div>
 
             <a href="mailto:your@email.com" class="info-box">
@@ -155,11 +120,12 @@
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const mouse = { x: null, y: null, radius: 150 };
+        const mouse = { x: 0, y: 0, radius: 150 };
 
+        // We listen to the window for mouse movement
         window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
         });
 
         function resize() {
@@ -175,8 +141,8 @@
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 2 + 1;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.7;
+                this.speedY = (Math.random() - 0.5) * 0.7;
             }
             update() {
                 this.x += this.speedX;
@@ -186,20 +152,9 @@
                 else if (this.x < 0) this.x = canvas.width;
                 if (this.y > canvas.height) this.y = 0;
                 else if (this.y < 0) this.y = canvas.height;
-
-                // Simple Repel effect
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < mouse.radius) {
-                    if (mouse.x > this.x && this.x > 0) this.x -= 1;
-                    if (mouse.x < this.x && this.x < canvas.width) this.x += 1;
-                    if (mouse.y > this.y && this.y > 0) this.y -= 1;
-                    if (mouse.y < this.y && this.y < canvas.height) this.y += 1;
-                }
             }
             draw() {
-                ctx.fillStyle = 'rgba(0, 242, 255, 0.5)';
+                ctx.fillStyle = 'rgba(0, 242, 255, 0.8)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -216,6 +171,7 @@
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
@@ -233,6 +189,19 @@
                         ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.stroke();
                     }
+                }
+                
+                // Mouse connection
+                const mdx = particles[i].x - mouse.x;
+                const mdy = particles[i].y - mouse.y;
+                const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mDist < mouse.radius) {
+                    ctx.strokeStyle = `rgba(0, 242, 255, ${1 - mDist/mouse.radius})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
                 }
             }
             requestAnimationFrame(animate);
