@@ -37,7 +37,16 @@
         .build-item { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--glass-border); border-radius: 24px; padding: 1.5rem; transition: 0.4s; }
         .build-item:hover { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-5px); }
         
-        .img-placeholder { width: 100%; aspect-ratio: 16/8; background: rgba(255, 255, 255, 0.03); border-radius: 16px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: var(--sub-text); border: 1px dashed var(--glass-border); font-size: 0.8rem; font-weight: 300; letter-spacing: 2px; }
+        /* Fixed Image Styling */
+        .build-img { 
+            width: 100%; 
+            aspect-ratio: 16/9; 
+            object-fit: cover; 
+            border-radius: 16px; 
+            margin-bottom: 1.5rem; 
+            border: 1px solid var(--glass-border);
+            background: rgba(255,255,255,0.02);
+        }
         
         h2 { text-align: center; margin: 0 0 0.5rem 0; font-size: 2.2rem; font-weight: 700; letter-spacing: -1px; }
         h3 { margin: 0 0 0.5rem 0; font-size: 1.2rem; font-weight: 500; }
@@ -64,29 +73,50 @@
                 <button class="cat-btn" onclick="showSection('others')">Others</button>
             </div>
 
+            <!-- US SECTION (3 Rows) -->
             <div id="us" class="section active">
                 <div class="grid">
-                    <div class="build-item"><div class="img-placeholder">IMAGE_US_01</div><h3>San Francisco District</h3><p class="desc">Detailed urban landscape featuring modern architecture and hilly terrain.</p></div>
-                    <div class="build-item"><div class="img-placeholder">IMAGE_US_02</div><h3>Midwest Suburbs</h3><p class="desc">A cozy residential neighborhood build with custom foliage and lighting.</p></div>
-                    <div class="build-item"><div class="img-placeholder">IMAGE_US_03</div><h3>Nevada Outpost</h3><p class="desc">Desert-themed military installation focusing on hard-surface modeling.</p></div>
+                    <div class="build-item">
+                        <img src="YOUR_US_IMAGE_LINK" class="build-img" alt="US Build">
+                        <h3>San Francisco District</h3>
+                        <p class="desc">Detailed urban landscape featuring modern architecture and hilly terrain.</p>
+                    </div>
+                    <div class="build-item">
+                        <img src="YOUR_US_IMAGE_LINK" class="build-img" alt="US Build">
+                        <h3>Midwest Suburbs</h3>
+                        <p class="desc">A cozy residential neighborhood build with custom foliage and lighting.</p>
+                    </div>
+                    <div class="build-item">
+                        <img src="YOUR_US_IMAGE_LINK" class="build-img" alt="US Build">
+                        <h3>Nevada Outpost</h3>
+                        <p class="desc">Desert-themed military installation focusing on hard-surface modeling.</p>
+                    </div>
                 </div>
             </div>
 
+            <!-- UK SECTION (6 Rows) -->
             <div id="uk" class="section">
                 <div class="grid">
-                    <div class="build-item"><div class="https://media.discordapp.net/attachments/1485721727446159703/1487494621964800101/Screenshot_2026-03-28_141243.png?ex=69c958d2&is=69c80752&hm=5f550512ec1978bc151ccdc6f26273b0cfce4c9f06622965b610117ac4404261&animated=true">IMAGE_UK_01</div><h3>London Underground</h3><p class="desc">Brutalist-inspired subway station with realistic tiling and lighting.</p></div>
-                    <div class="build-item"><div class="img-placeholder">IMAGE_UK_02</div><h3>Yorkshire Village</h3><p class="desc">Traditional stone-cottage environment with high-detail textures.</p></div>
-                    <div class="build-item"><div class="img-placeholder">IMAGE_UK_03</div><h3>Manchester Industrial</h3><p class="desc">Atmospheric warehouse district with rain effects and brickwork.</p></div>
-                    <div class="build-item"><div class="img-placeholder">IMAGE_UK_04</div><h3>Coastal Pier</h3><p class="desc">Weathered wooden pier structure featuring sunset atmosphere.</p></div>
-                    <div class="build-item"><div class="img-placeholder">IMAGE_UK_05</div><h3>Highland Cabin</h3><p class="desc">Small-scale interior focus showcasing prop design.</p></div>
-                    <div class="build-item"><div class="img-placeholder">IMAGE_UK_06</div><h3>Modern Estate</h3><p class="desc">Brutalist London housing project recreation.</p></div>
+                    <div class="build-item">
+                        <!-- ADD YOUR LINK HERE -->
+                        <img src="https://media.discordapp.net/attachments/1485721727446159703/1487494621964800101/Screenshot_2026-03-28_141243.png?ex=69c958d2&is=69c80752&hm=5f550512ec1978bc151ccdc6f26273b0cfce4c9f06622965b610117ac4404261&animated=true" class="build-img" alt="London Underground">
+                        <h3>London Underground</h3>
+                        <p class="desc">Brutalist-inspired subway station with realistic tiling and lighting.</p>
+                    </div>
+                    <!-- Repeat for other 5 items... -->
+                    <div class="build-item"><img src="LINK" class="build-img"><h3>Yorkshire Village</h3><p class="desc">Traditional stone-cottage environment.</p></div>
+                    <div class="build-item"><img src="LINK" class="build-img"><h3>Manchester Industrial</h3><p class="desc">Atmospheric warehouse district.</p></div>
+                    <div class="build-item"><img src="LINK" class="build-img"><h3>Coastal Pier</h3><p class="desc">Weathered wooden pier structure.</p></div>
+                    <div class="build-item"><img src="LINK" class="build-img"><h3>Highland Cabin</h3><p class="desc">Small-scale interior focus.</p></div>
+                    <div class="build-item"><img src="LINK" class="build-img"><h3>Modern Estate</h3><p class="desc">Brutalist London housing project.</p></div>
                 </div>
             </div>
 
+            <!-- OTHERS SECTION (2 Rows) -->
             <div id="others" class="section">
                 <div class="grid">
-                    <div class="build-item"><div class="img-placeholder">IMAGE_OTHER_01</div><h3>Cyberpunk Alley</h3><p class="desc">Neon-focused environment showcasing glowing textures and glass.</p></div>
-                    <div class="build-item"><div class="img-placeholder">IMAGE_OTHER_02</div><h3>Sci-Fi Laboratory</h3><p class="desc">Clean, white minimalist interior with complex mechanical parts.</p></div>
+                    <div class="build-item"><img src="LINK" class="build-img"><h3>Cyberpunk Alley</h3><p class="desc">Neon-focused environment.</p></div>
+                    <div class="build-item"><img src="LINK" class="build-img"><h3>Sci-Fi Laboratory</h3><p class="desc">Clean, white minimalist interior.</p></div>
                 </div>
             </div>
 
