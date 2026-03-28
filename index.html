@@ -3,83 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Connect | Portfolio</title>
     <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent: #00f2ff;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 0;
-            background: #0f0f0f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* Modern deep gradient background */
+            background: radial-gradient(circle at top left, #1a1a2e, #16213e, #0f3460);
             color: #ffffff;
-            line-height: 1.6;
+            overflow: hidden;
         }
-        header {
-            background: #1a1a1a;
-            padding: 4rem 2rem;
+
+        /* The Glass Container */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 90%;
+            max-width: 450px;
             text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
-        h1 { font-size: 3rem; margin: 0; }
-        p { font-size: 1.3rem; opacity: 0.9; }
-        
-        section {
-            padding: 4rem 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
         }
-        h2 { color: #00ff9d; }
-        
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        .project {
-            background: #1a1a1a;
-            padding: 2rem;
-            border-radius: 10px;
+
+        /* Contact Items */
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
-        
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 1.2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .info-box:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .id-badge {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-top: 4px;
+            display: block;
+        }
+
         footer {
-            text-align: center;
-            padding: 2rem;
-            background: #1a1a1a;
+            margin-top: 2.5rem;
+            font-size: 0.8rem;
+            opacity: 0.4;
         }
-        a { color: #00ff9d; text-decoration: none; }
+
+        /* Animated background blob for extra flare */
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.2;
+            animation: move 10s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-50%, -50%); }
+            to { transform: translate(50%, 50%); }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Hi, I'm Your Name</h1>
-        <p>Full Stack Developer / Designer / [Your Role]</p>
-        <p>Building cool things with code.</p>
-    </header>
+    <div class="blob"></div>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Write a short bio here. What you do, what you're passionate about, and what you're currently learning or working on.</p>
-    </section>
+    <main class="glass-card">
+        <h1>Your Name</h1>
+        <p class="subtitle">Digital Identity</p>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="project">
-                <h3>Project One</h3>
-                <p>Short description of what you built and the technologies used (e.g., React, Python, etc.).</p>
-                <p><a href="https://github.com/yourusername/project1" target="_blank">View on GitHub →</a></p>
+        <div class="contact-section">
+            <a href="https://www.roblox.com/users/YOUR_ID_HERE/profile" target="_blank" class="info-box">
+                <span class="label">Roblox</span>
+                <span class="value">@Username</span>
+                <span class="id-badge">ID: 123456789</span>
+            </a>
+
+            <div class="info-box">
+                <span class="label">Discord</span>
+                <span class="value">username_here</span>
+                <span class="id-badge">ID: 987654321012345678</span>
             </div>
-            <!-- Add more project cards like the one above -->
+
+            <a href="mailto:your@email.com" class="info-box">
+                <span class="label">Email</span>
+                <span class="value">your@email.com</span>
+            </a>
         </div>
-    </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: you@email.com</p>
-        <p>LinkedIn: linkedin.com/in/yourprofile</p>
-        <p>GitHub: github.com/yourusername</p>
-    </section>
-
-    <footer>
-        <p>Made with ❤️ using HTML + CSS</p>
-    </footer>
+        <footer>
+            &copy; 2026 • Professional Portfolio
+        </footer>
+    </main>
 </body>
 </html>
