@@ -13,19 +13,24 @@
             --sub-text: #888888;
         }
 
+        @keyframes PageFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         body, html {
             margin: 0; padding: 0;
             width: 100%; height: 100%;
             background-color: var(--bg-color);
             color: #ffffff;
             font-family: 'Inter', -apple-system, sans-serif;
-            overflow-x: hidden; /* Allows scrolling down if you have many builds */
+            overflow-x: hidden;
         }
 
-        /* --- NAVIGATION --- */
         .top-nav {
             position: fixed; top: 2rem; right: 2rem;
             display: flex; gap: 1rem; z-index: 100;
+            animation: PageFadeIn 1.2s ease-out forwards;
         }
 
         .nav-item {
@@ -41,13 +46,11 @@
             border-color: rgba(255, 255, 255, 0.4);
         }
 
-        /* --- BACKGROUND --- */
         #particle-canvas {
             position: fixed; top: 0; left: 0;
             width: 100%; height: 100%; z-index: 1; pointer-events: none;
         }
 
-        /* --- BUILDS LAYOUT --- */
         .container {
             display: flex; justify-content: center; align-items: center;
             min-height: 100vh; padding: 5rem 2rem; position: relative; z-index: 10;
@@ -59,28 +62,23 @@
             -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--glass-border);
             border-radius: 28px;
-            padding: 3rem;
-            width: 100%;
-            max-width: 800px; /* Wider for builds */
+            padding: 3rem; width: 100%; max-width: 800px;
             text-align: center;
+            animation: PageFadeIn 0.8s ease-out forwards;
         }
 
         h1 { font-size: 2.2rem; margin: 0; letter-spacing: -1.5px; }
         .subtitle { font-size: 0.8rem; color: var(--sub-text); margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 4px; }
 
-        /* The Grid */
         .builds-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            text-align: left;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem; text-align: left;
         }
 
         .build-item {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--glass-border);
-            padding: 1.5rem;
-            border-radius: 18px;
+            padding: 1.5rem; border-radius: 18px;
             transition: 0.3s ease;
         }
 
@@ -92,56 +90,43 @@
 
         .build-item h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; color: var(--accent); }
         .build-item p { margin: 0; font-size: 0.85rem; color: var(--sub-text); line-height: 1.4; }
-
         footer { margin-top: 3rem; font-size: 0.7rem; color: var(--sub-text); }
     </style>
 </head>
 <body>
-
     <nav class="top-nav">
         <a href="index.html" class="nav-item">Home Page</a>
         <a href="builds.html" class="nav-item active">Builds</a>
     </nav>
-
     <canvas id="particle-canvas"></canvas>
-
     <div class="container">
         <main class="glass-card">
             <h1>My Builds</h1>
             <p class="subtitle">Roblox Architecture & Design</p>
-
             <div class="builds-grid">
                 <div class="build-item">
                     <h3>Map Name One</h3>
-                    <p>Brief description of the build. Mention style (e.g. Low Poly, Realistic) and time taken.</p>
+                    <p>Brief description of the build. Mention style (e.g. Realistic) and time taken.</p>
                 </div>
-
                 <div class="build-item">
                     <h3>Advanced System</h3>
                     <p>Describe a specific script or model you created for a game here.</p>
                 </div>
-
                 <div class="build-item">
                     <h3>UI Design Set</h3>
                     <p>Clean glass-style UI buttons and menus created for an RPG project.</p>
                 </div>
             </div>
-
             <footer>&copy; 2026 • WORK LOG</footer>
         </main>
     </div>
-
     <script>
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         const mouse = { x: null, y: null };
         window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            init();
-        }
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; init(); }
         window.addEventListener('resize', resize);
         resize();
         class Particle {
@@ -153,16 +138,13 @@
                 this.speedY = (Math.random() - 0.5) * 0.4;
             }
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
+                this.x += this.speedX; this.y += this.speedY;
                 if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width;
                 if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height;
             }
             draw() {
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
             }
         }
         function init() {
@@ -173,19 +155,16 @@
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
+                particles[i].update(); particles[i].draw();
                 for (let j = i; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 150) {
                         ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - dist/150)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
+                        ctx.lineWidth = 0.5; ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+                        ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
                     }
                 }
             }
