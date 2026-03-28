@@ -9,10 +9,11 @@
             --bg-color: #050505;
             --glass-bg: rgba(20, 20, 20, 0.6);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --accent: #ffffff;
+            --accent: #00f2ff;
             --sub-text: #888888;
         }
 
+        /* Animation logic matches index.html for consistency */
         @keyframes PageFadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -85,7 +86,7 @@
         .build-item:hover {
             background: rgba(255, 255, 255, 0.05);
             transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent);
         }
 
         .build-item h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; color: var(--accent); }
@@ -105,16 +106,16 @@
             <p class="subtitle">Roblox Architecture & Design</p>
             <div class="builds-grid">
                 <div class="build-item">
-                    <h3>Map Name One</h3>
-                    <p>Brief description of the build. Mention style (e.g. Realistic) and time taken.</p>
+                    <h3>Project Alpha</h3>
+                    <p>High-detail realistic modeling project focusing on lighting and textures.</p>
                 </div>
                 <div class="build-item">
-                    <h3>Advanced System</h3>
-                    <p>Describe a specific script or model you created for a game here.</p>
+                    <h3>Cyber City</h3>
+                    <p>Neon-infused low-poly city environment built for a futuristic RPG.</p>
                 </div>
                 <div class="build-item">
-                    <h3>UI Design Set</h3>
-                    <p>Clean glass-style UI buttons and menus created for an RPG project.</p>
+                    <h3>System Interface</h3>
+                    <p>Custom scripted UI panels and interactive menus for game systems.</p>
                 </div>
             </div>
             <footer>&copy; 2026 • WORK LOG</footer>
