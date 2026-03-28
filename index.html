@@ -13,6 +13,11 @@
             --sub-text: #888888;
         }
 
+        @keyframes PageFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         body, html {
             margin: 0; padding: 0;
             width: 100%; height: 100%;
@@ -23,63 +28,44 @@
             overflow: hidden;
         }
 
-        /* --- NAVIGATION --- */
         .top-nav {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            display: flex;
-            gap: 1rem;
-            z-index: 100;
+            position: fixed; top: 2rem; right: 2rem;
+            display: flex; gap: 1rem; z-index: 100;
+            animation: PageFadeIn 1.2s ease-out forwards;
         }
 
         .nav-item {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-decoration: none; color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem; font-weight: 700; padding: 0.6rem 1.2rem;
+            border-radius: 12px; background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            transition: 0.3s ease; text-transform: uppercase; letter-spacing: 1px;
         }
 
         .nav-item:hover, .nav-item.active {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.1);
+            color: #fff; background: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.4);
         }
 
-        /* --- BACKGROUND DOTS --- */
         #particle-canvas {
             position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 1;
-            pointer-events: none;
+            width: 100%; height: 100%; z-index: 1; pointer-events: none;
         }
 
-        /* --- MAIN CARD --- */
         .glass-card {
-            position: relative;
-            z-index: 10;
+            position: relative; z-index: 10;
             background: var(--glass-bg);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--glass-border);
             border-radius: 28px;
-            padding: 3rem;
-            width: 90%;
-            max-width: 420px;
+            padding: 3rem; width: 90%; max-width: 420px;
             text-align: center;
+            animation: PageFadeIn 0.8s ease-out forwards;
         }
 
         h1 { font-size: 2.2rem; margin: 0; letter-spacing: -1.5px; }
         .subtitle { font-size: 0.8rem; color: var(--sub-text); margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 4px; }
-
         .contact-section { display: flex; flex-direction: column; gap: 1.2rem; }
 
         .info-box {
@@ -98,61 +84,45 @@
         .label { display: block; font-size: 0.7rem; font-weight: 800; color: var(--sub-text); text-transform: uppercase; margin-bottom: 6px; }
         .value { font-size: 1.1rem; font-weight: 500; }
         .id-badge { font-size: 0.75rem; color: var(--sub-text); margin-top: 6px; display: block; opacity: 0.6; }
-
         footer { margin-top: 3rem; font-size: 0.7rem; color: var(--sub-text); }
     </style>
 </head>
 <body>
-
     <nav class="top-nav">
         <a href="index.html" class="nav-item active">Home Page</a>
         <a href="builds.html" class="nav-item">Builds</a>
     </nav>
-
     <canvas id="particle-canvas"></canvas>
-
     <main class="glass-card">
         <h1>Your Name</h1>
         <p class="subtitle">Digital Identity</p>
-
         <div class="contact-section">
-            <a href="https://www.roblox.com/users/YOUR_ID/profile" target="_blank" class="info-box">
+            <a href="#" target="_blank" class="info-box">
                 <span class="label">Roblox</span>
                 <span class="value">@Username</span>
                 <span class="id-badge">UID: 123456789</span>
             </a>
-
             <div class="info-box">
                 <span class="label">Discord</span>
                 <span class="value">username_here</span>
                 <span class="id-badge">ID: 9876543210</span>
             </div>
-
             <a href="mailto:your@email.com" class="info-box">
-                <span class="label">Email</span>
+                <span class="label">Mail Protocol</span>
                 <span class="value">your@email.com</span>
             </a>
         </div>
-
         <footer>&copy; 2026 • SYSTEM TERMINAL</footer>
     </main>
-
     <script>
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         const mouse = { x: null, y: null };
-
         window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            init();
-        }
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; init(); }
         window.addEventListener('resize', resize);
         resize();
-
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
@@ -162,41 +132,33 @@
                 this.speedY = (Math.random() - 0.5) * 0.4;
             }
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
+                this.x += this.speedX; this.y += this.speedY;
                 if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width;
                 if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height;
             }
             draw() {
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
             }
         }
-
         function init() {
             particles = [];
             let quantity = (canvas.width * canvas.height) / 10000;
             for (let i = 0; i < quantity; i++) { particles.push(new Particle()); }
         }
-
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
+                particles[i].update(); particles[i].draw();
                 for (let j = i; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 150) {
                         ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - dist/150)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
+                        ctx.lineWidth = 0.5; ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+                        ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
                     }
                 }
             }
