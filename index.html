@@ -12,151 +12,176 @@
         :root { --roblox-green: #00ff9d; }
         
         * { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        
         body { font-family: 'Inter', system-ui, sans-serif; }
         .title-font { font-family: 'Space Grotesk', sans-serif; }
 
+        .project-card {
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
         .project-img {
-            height: 260px;
+            height: 280px;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            width: 100%;
         }
-        
         .project-card:hover .project-img {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
-        
-        .project-overlay {
+        .section-header:after {
+            content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-            opacity: 0;
+            width: 70px;
+            height: 4px;
+            background: #00ff9d;
+            bottom: -10px;
+            left: 0;
         }
-        
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-        
         .glow-text { text-shadow: 0 0 30px rgb(0 255 157); }
     </style>
 </head>
 <body class="bg-zinc-950 text-white overflow-x-hidden">
 
-    <!-- (Your existing Navbar + Hero + About + Skills + Footer remain the same) -->
-    <!-- ... [Keep everything from your previous code until Projects section] ... -->
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="custom-cursor hidden md:block"></div>
+    <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
 
-    <!-- ====================== UPDATED PROJECTS SECTION ====================== -->
-    <section id="projects" class="py-32 bg-black">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="flex justify-between items-end mb-16">
-                <h2 class="section-header text-6xl title-font font-semibold tracking-tighter">Featured Projects</h2>
-                <a href="#" class="flex items-center gap-3 text-emerald-400 hover:text-white group text-lg">
-                    SEE ALL WORK <span class="text-2xl group-hover:translate-x-2">→</span>
-                </a>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-emerald-500 rounded-xl flex items-center justify-center text-xl font-bold">01</div>
+                <h1 class="title-font text-3xl font-semibold tracking-tighter">01NM</h1>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                
-                <!-- Project 1 -->
-                <div class="project-card group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5">
-                    <div class="relative overflow-hidden">
-                        <img src="https://via.placeholder.com/800x500/4f46e5/ffffff?text=PROJECT+1" 
-                             alt="NEXUS: 01nm Realms" 
-                             class="project-img w-full">
-                        <div class="project-overlay"></div>
-                        <div class="absolute top-6 right-6 px-4 py-1 bg-black/70 text-xs font-mono rounded-full">2025</div>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="font-mono text-emerald-400 text-sm mb-2">OPEN WORLD • RPG</div>
-                        <h3 class="text-3xl font-semibold title-font mb-3">NEXUS: 01nm Realms</h3>
-                        <p class="text-zinc-400 line-clamp-3 mb-6">
-                            Massive open-world exploration experience with dynamic weather, player housing, and deep progression systems.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <div class="text-sm text-zinc-500">1.2M Visits</div>
-                            </div>
-                            <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
-                               class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-2xl text-sm">
-                                PLAY NOW →
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#" class="nav-link text-zinc-400 hover:text-white">HOME</a>
+                <a href="#projects" class="nav-link text-zinc-400 hover:text-white">PROJECTS</a>
+                <a href="#about" class="nav-link text-zinc-400 hover:text-white">ABOUT</a>
+                <a href="#experience" class="nav-link text-zinc-400 hover:text-white">EXPERIENCE</a>
+                <a href="#contact" class="nav-link text-zinc-400 hover:text-white">CONTACT</a>
+            </div>
 
-                <!-- Project 2 -->
-                <div class="project-card group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5">
-                    <div class="relative overflow-hidden">
-                        <img src="https://via.placeholder.com/800x500/f59e0b/ffffff?text=PROJECT+2" 
-                             alt="NEON DRIFT" 
-                             class="project-img w-full">
-                        <div class="project-overlay"></div>
-                        <div class="absolute top-6 right-6 px-4 py-1 bg-black/70 text-xs font-mono rounded-full">2024</div>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="font-mono text-emerald-400 text-sm mb-2">RACING • MULTIPLAYER</div>
-                        <h3 class="text-3xl font-semibold title-font mb-3">NEON DRIFT</h3>
-                        <p class="text-zinc-400 line-clamp-3 mb-6">
-                            High-speed futuristic racing with custom vehicles, leaderboards, and seasonal events.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <div class="text-sm text-zinc-500">680K Visits</div>
-                            </div>
-                            <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
-                               class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-2xl text-sm">
-                                PLAY NOW →
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <a href="#contact" class="px-6 py-3 bg-white text-black font-semibold rounded-2xl flex items-center gap-2 hover:bg-emerald-400 hover:text-white">
+                LET'S BUILD
+            </a>
+        </div>
+    </nav>
 
-                <!-- Project 3 -->
-                <div class="project-card group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5">
-                    <div class="relative overflow-hidden">
-                        <img src="https://via.placeholder.com/800x500/06b67f/ffffff?text=PROJECT+3" 
-                             alt="SHADOW FORGE" 
-                             class="project-img w-full">
-                        <div class="project-overlay"></div>
-                        <div class="absolute top-6 right-6 px-4 py-1 bg-black/70 text-xs font-mono rounded-full">2025</div>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="font-mono text-emerald-400 text-sm mb-2">TYCOON • COMBAT</div>
-                        <h3 class="text-3xl font-semibold title-font mb-3">SHADOW FORGE</h3>
-                        <p class="text-zinc-400 line-clamp-3 mb-6">
-                            Tycoon + PvP arena hybrid with weapon crafting and clan warfare.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <div class="text-sm text-zinc-500">410K Visits</div>
-                            </div>
-                            <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
-                               class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-2xl text-sm">
-                                PLAY NOW →
-                            </a>
-                        </div>
-                    </div>
+    <!-- Hero -->
+    <section class="hero-bg min-h-screen flex items-center relative pt-20">
+        <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <h1 class="title-font text-7xl md:text-8xl font-bold leading-none tracking-tighter glow-text">
+                    I CRAFT<br>ROBLOX<br>EXPERIENCES
+                </h1>
+                <p class="text-xl text-zinc-400 max-w-lg">
+                    Full-stack Roblox developer with 4+ years of experience creating immersive games loved by millions.
+                </p>
+                <div class="flex gap-5">
+                    <a href="#projects" class="px-8 py-5 bg-emerald-500 text-black font-semibold rounded-3xl">VIEW MY WORK</a>
+                    <a href="https://www.roblox.com/users/YOURUSERID/profile" target="_blank" 
+                       class="px-8 py-5 border border-white/30 rounded-3xl flex items-center gap-3">
+                        <i class="fa-brands fa-roblox"></i> ROBLOX PROFILE
+                    </a>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Rest of your page (Skills + Footer) remains the same -->
-    
+    <!-- ====================== PROJECTS SECTION ====================== -->
+    <section id="projects" class="py-32 bg-black">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="section-header text-6xl title-font font-semibold tracking-tighter mb-16">Featured Projects</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Replace image links and text below with your real projects -->
+                <div class="project-card group bg-zinc-900 rounded-3xl">
+                    <img src="https://via.placeholder.com/800x500/4f46e5/fff?text=YOUR+GAME+1" 
+                         alt="Project 1" class="project-img">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-2">Project Title 1</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Genre • Year</p>
+                        <p class="text-zinc-400 line-clamp-3 mb-6">
+                            Short description of what you made and what makes it special.
+                        </p>
+                        <a href="https://www.roblox.com/games/GAMEID" target="_blank"
+                           class="inline-flex items-center gap-2 text-emerald-400 hover:text-white">
+                            Play Game <span class="text-xl">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card group bg-zinc-900 rounded-3xl">
+                    <img src="https://via.placeholder.com/800x500/f59e0b/fff?text=YOUR+GAME+2" 
+                         alt="Project 2" class="project-img">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-2">Project Title 2</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Genre • Year</p>
+                        <p class="text-zinc-400 line-clamp-3 mb-6">
+                            Short description of what you made and what makes it special.
+                        </p>
+                        <a href="https://www.roblox.com/games/GAMEID" target="_blank"
+                           class="inline-flex items-center gap-2 text-emerald-400 hover:text-white">
+                            Play Game <span class="text-xl">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card group bg-zinc-900 rounded-3xl">
+                    <img src="https://via.placeholder.com/800x500/10b981/fff?text=YOUR+GAME+3" 
+                         alt="Project 3" class="project-img">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-2">Project Title 3</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Genre • Year</p>
+                        <p class="text-zinc-400 line-clamp-3 mb-6">
+                            Short description of what you made and what makes it special.
+                        </p>
+                        <a href="https://www.roblox.com/games/GAMEID" target="_blank"
+                           class="inline-flex items-center gap-2 text-emerald-400 hover:text-white">
+                            Play Game <span class="text-xl">→</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-16">
+                <p class="text-zinc-400">Want to see more of my work?</p>
+                <a href="#" class="inline-block mt-4 px-8 py-4 border border-emerald-400 rounded-3xl hover:bg-emerald-400 hover:text-black">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-32">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="section-header text-6xl title-font font-semibold tracking-tighter mb-12">About Me</h2>
+            <div class="max-w-3xl text-lg text-zinc-300">
+                <p class="mb-6">Hi, I'm 01NM — a passionate Roblox developer who loves turning creative ideas into fun, polished experiences.</p>
+                <p>I specialize in clean Luau scripting, beautiful UI/UX, optimized gameplay, and immersive world building.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-black py-20 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <h2 class="text-5xl title-font font-bold mb-6">Let's work together</h2>
+            <a href="mailto:your@email.com" class="text-3xl text-emerald-400 hover:text-white">your@email.com</a>
+        </div>
+    </footer>
+
     <script>
-        // === Your existing script (cursor, hero animation, smooth scroll, etc.) ===
+        // Custom Cursor
         const cursor = document.getElementById('custom-cursor');
         const dot = document.getElementById('cursor-dot');
-        
         if (window.innerWidth > 768) {
             cursor.style.display = 'block';
             dot.style.display = 'block';
-            
-            document.addEventListener('mousemove', (e) => {
+            document.addEventListener('mousemove', e => {
                 cursor.style.left = e.clientX + 'px';
                 cursor.style.top = e.clientY + 'px';
                 dot.style.left = e.clientX + 'px';
@@ -164,27 +189,16 @@
             });
         }
 
-        // Hero model animation
-        const heroModel = document.getElementById('hero-model');
-        let angle = 0;
-        setInterval(() => {
-            angle += 0.4;
-            heroModel.style.transform = `translate(-50%, -50%) rotateX(12deg) rotateY(${angle}deg)`;
-        }, 50);
-
-        // Smooth scroll
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#') {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
-
-        console.log('%c✅ 01NM Roblox Portfolio loaded successfully', 'color:#00ff9d; font-family:monospace');
     </script>
 </body>
 </html>
