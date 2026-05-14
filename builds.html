@@ -9,11 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
         
-        :root {
-            --primary-blue: #1E90FF;
-            --blue-glow: #00B4FF;
-        }
-        
+        :root { --primary-blue: #1E90FF; }
         * { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         body { font-family: 'Inter', system-ui, sans-serif; }
         .title-font { font-family: 'Space Grotesk', sans-serif; }
@@ -24,18 +20,14 @@
             overflow: hidden;
             border-radius: 24px;
         }
-        
         .project-img {
             height: 320px;
             object-fit: cover;
             width: 100%;
         }
-        
         .project-card:hover .project-img {
             transform: scale(1.08);
         }
-        
-        .glow-blue { text-shadow: 0 0 25px var(--blue-glow); }
     </style>
 </head>
 <body class="bg-zinc-950 text-white">
@@ -49,129 +41,54 @@
             </div>
             
             <div class="hidden md:flex items-center gap-10 text-sm font-medium">
-                <a href="index.html" class="nav-link text-zinc-400 hover:text-white">HOME</a>
-                <a href="build.html" class="nav-link text-blue-400 font-semibold">PAST WORK</a>
-                <a href="index.html#about" class="nav-link text-zinc-400 hover:text-white">ABOUT</a>
-                <a href="index.html#contact" class="nav-link text-zinc-400 hover:text-white">CONTACT</a>
+                <a href="index.html" class="text-zinc-400 hover:text-white">HOME</a>
+                <a href="builds.html" class="text-blue-400 font-semibold">PAST WORK</a>
+                <a href="index.html#about" class="text-zinc-400 hover:text-white">ABOUT</a>
+                <a href="index.html#contact" class="text-zinc-400 hover:text-white">CONTACT</a>
             </div>
 
-            <a href="index.html#contact" 
-               class="px-6 py-3 bg-white text-black font-semibold rounded-2xl hover:bg-blue-400 hover:text-white">
+            <a href="index.html#contact" class="px-6 py-3 bg-white text-black font-semibold rounded-2xl hover:bg-blue-400 hover:text-white">
                 LET'S BUILD
             </a>
         </div>
     </nav>
 
     <!-- Header -->
-    <section class="pt-32 pb-20 bg-gradient-to-b from-zinc-900 to-zinc-950">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <h1 class="title-font text-6xl md:text-7xl font-bold tracking-tighter text-center glow-blue">
-                PAST WORK
-            </h1>
-            <p class="text-center text-zinc-400 mt-4 text-lg max-w-2xl mx-auto">
-                A collection of Roblox experiences I've built and contributed to over the years.
-            </p>
+    <section class="pt-32 pb-16 bg-gradient-to-b from-zinc-900 to-zinc-950">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <h1 class="title-font text-6xl md:text-7xl font-bold tracking-tighter">PAST WORK</h1>
+            <p class="text-zinc-400 mt-4 text-lg">My Roblox creations and contributions</p>
         </div>
     </section>
 
     <!-- Projects Grid -->
     <section class="py-20">
         <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="projects-grid">
-                
-                <!-- ==================== PROJECT EXAMPLE 1 ==================== -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Add your projects here -->
                 <div class="project-card group">
-                    <img src="https://via.placeholder.com/800x500/1e40af/ffffff?text=YOUR+GAME+IMAGE+1" 
-                         class="project-img" alt="Project 1">
+                    <img src="https://via.placeholder.com/800x500/1e40af/ffffff?text=GAME+1" class="project-img" alt="">
                     <div class="p-8">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-semibold title-font">Nexus Realms</h3>
-                            <span class="text-xs font-mono bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">2025</span>
-                        </div>
-                        <p class="text-blue-400 text-sm mb-3">Open World • RPG • Simulation</p>
-                        <p class="text-zinc-400 line-clamp-4">
-                            Massive open-world exploration game with dynamic weather, player housing, 
-                            and deep progression systems. Over 1.2M visits.
-                        </p>
-                        <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
-                           class="mt-6 inline-flex items-center gap-2 text-blue-400 hover:text-white font-medium">
-                            PLAY EXPERIENCE 
-                            <i class="fa-solid fa-arrow-right"></i>
+                        <h3 class="text-2xl font-semibold title-font">Your Game Title 1</h3>
+                        <p class="text-blue-400 text-sm my-2">Genre • Year</p>
+                        <p class="text-zinc-400">Short description of the project.</p>
+                        <a href="https://www.roblox.com/games/..." target="_blank" class="mt-6 text-blue-400 hover:text-white inline-flex items-center gap-2">
+                            Play Game →
                         </a>
                     </div>
                 </div>
 
-                <!-- ==================== PROJECT EXAMPLE 2 ==================== -->
-                <div class="project-card group">
-                    <img src="https://via.placeholder.com/800x500/2563eb/ffffff?text=YOUR+GAME+IMAGE+2" 
-                         class="project-img" alt="Project 2">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-semibold title-font">Neon Drift</h3>
-                            <span class="text-xs font-mono bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">2024</span>
-                        </div>
-                        <p class="text-blue-400 text-sm mb-3">Racing • Multiplayer</p>
-                        <p class="text-zinc-400 line-clamp-4">
-                            High-speed futuristic racing experience with custom vehicles, leaderboards, 
-                            and seasonal events.
-                        </p>
-                        <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
-                           class="mt-6 inline-flex items-center gap-2 text-blue-400 hover:text-white font-medium">
-                            PLAY EXPERIENCE 
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- ==================== PROJECT EXAMPLE 3 ==================== -->
-                <div class="project-card group">
-                    <img src="https://via.placeholder.com/800x500/3b82f6/ffffff?text=YOUR+GAME+IMAGE+3" 
-                         class="project-img" alt="Project 3">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-semibold title-font">Shadow Forge</h3>
-                            <span class="text-xs font-mono bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">2025</span>
-                        </div>
-                        <p class="text-blue-400 text-sm mb-3">Tycoon • Combat • PvP</p>
-                        <p class="text-zinc-400 line-clamp-4">
-                            Tycoon combined with PvP arena. Features weapon crafting, clan systems, and intense combat.
-                        </p>
-                        <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
-                           class="mt-6 inline-flex items-center gap-2 text-blue-400 hover:text-white font-medium">
-                            PLAY EXPERIENCE 
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+                <!-- Duplicate the block above for more projects -->
+                <!-- Example 2 & 3 can be copied here -->
 
             </div>
         </div>
     </section>
 
-    <footer class="bg-black py-16 border-t border-white/10">
-        <div class="max-w-screen-2xl mx-auto px-8 text-center text-zinc-500">
-            © 2026 01NM • Roblox Developer Portfolio
-        </div>
+    <footer class="bg-black py-12 text-center text-zinc-500">
+        © 2026 01NM • Roblox Portfolio
     </footer>
 
-    <script>
-        // Optional: Simple fade-in animation for cards
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            observer.observe(card);
-        });
-
-        console.log('%c✅ Past Work Page Loaded Successfully', 'color:#1E90FF; font-family:monospace');
-    </script>
 </body>
 </html>
