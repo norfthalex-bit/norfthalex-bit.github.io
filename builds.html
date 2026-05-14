@@ -9,86 +9,98 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
         
-        :root { --primary-blue: #1E90FF; }
-        * { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         body { font-family: 'Inter', system-ui, sans-serif; }
         .title-font { font-family: 'Space Grotesk', sans-serif; }
-
+        
         .project-card {
             background: #18181b;
             border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
             overflow: hidden;
-            border-radius: 24px;
+            transition: all 0.4s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4);
         }
         .project-img {
+            width: 100%;
             height: 320px;
             object-fit: cover;
-            width: 100%;
-        }
-        .project-card:hover .project-img {
-            transform: scale(1.08);
         }
     </style>
 </head>
 <body class="bg-zinc-950 text-white">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl">
-        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+    <nav class="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-500 rounded-xl flex items-center justify-center text-xl font-bold">01</div>
-                <h1 class="title-font text-3xl font-semibold tracking-tighter">01NM</h1>
+                <div class="w-9 h-9 bg-blue-500 rounded-2xl flex items-center justify-center font-bold text-xl">01</div>
+                <h1 class="title-font text-3xl font-bold">01NM</h1>
             </div>
-            
-            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
-                <a href="index.html" class="text-zinc-400 hover:text-white">HOME</a>
-                <a href="builds.html" class="text-blue-400 font-semibold">PAST WORK</a>
-                <a href="index.html#about" class="text-zinc-400 hover:text-white">ABOUT</a>
-                <a href="index.html#contact" class="text-zinc-400 hover:text-white">CONTACT</a>
+            <div class="flex gap-8 text-sm">
+                <a href="index.html" class="hover:text-blue-400">Home</a>
+                <a href="builds.html" class="text-blue-400 font-medium">Past Work</a>
             </div>
-
-            <a href="index.html#contact" class="px-6 py-3 bg-white text-black font-semibold rounded-2xl hover:bg-blue-400 hover:text-white">
-                LET'S BUILD
-            </a>
         </div>
     </nav>
 
     <!-- Header -->
-    <section class="pt-32 pb-16 bg-gradient-to-b from-zinc-900 to-zinc-950">
-        <div class="max-w-screen-2xl mx-auto px-8 text-center">
-            <h1 class="title-font text-6xl md:text-7xl font-bold tracking-tighter">PAST WORK</h1>
-            <p class="text-zinc-400 mt-4 text-lg">My Roblox creations and contributions</p>
-        </div>
-    </section>
+    <div class="pt-28 pb-16 text-center">
+        <h1 class="title-font text-6xl font-bold tracking-tighter">Past Work</h1>
+        <p class="text-zinc-400 mt-3">My Roblox Projects & Creations</p>
+    </div>
 
     <!-- Projects Grid -->
-    <section class="py-20">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+    <div class="max-w-7xl mx-auto px-8 pb-24">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                <!-- Add your projects here -->
-                <div class="project-card group">
-                    <img src="https://via.placeholder.com/800x500/1e40af/ffffff?text=GAME+1" class="project-img" alt="">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-semibold title-font">Your Game Title 1</h3>
-                        <p class="text-blue-400 text-sm my-2">Genre • Year</p>
-                        <p class="text-zinc-400">Short description of the project.</p>
-                        <a href="https://www.roblox.com/games/..." target="_blank" class="mt-6 text-blue-400 hover:text-white inline-flex items-center gap-2">
-                            Play Game →
-                        </a>
-                    </div>
+            <!-- ====================== ADD NEW PROJECTS BELOW ====================== -->
+
+            <!-- PROJECT EXAMPLE 1 - Copy from here -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/800x500/1e40af/ffffff?text=REPLACE+IMAGE+1" 
+                     class="project-img" alt="Project">
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold title-font mb-3">Game Title Here</h3>
+                    <p class="text-blue-400 text-sm mb-4">Genre • Year</p>
+                    <p class="text-zinc-400 leading-relaxed">
+                        Short description about the project. What you made, features, and any cool facts.
+                    </p>
                 </div>
-
-                <!-- Duplicate the block above for more projects -->
-                <!-- Example 2 & 3 can be copied here -->
-
             </div>
-        </div>
-    </section>
 
-    <footer class="bg-black py-12 text-center text-zinc-500">
-        © 2026 01NM • Roblox Portfolio
-    </footer>
+            <!-- PROJECT EXAMPLE 2 -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/800x500/2563eb/ffffff?text=REPLACE+IMAGE+2" 
+                     class="project-img" alt="Project">
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold title-font mb-3">Game Title Here</h3>
+                    <p class="text-blue-400 text-sm mb-4">Genre • Year</p>
+                    <p class="text-zinc-400 leading-relaxed">
+                        Short description about the project. What you made, features, and any cool facts.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PROJECT EXAMPLE 3 -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/800x500/3b82f6/ffffff?text=REPLACE+IMAGE+3" 
+                     class="project-img" alt="Project">
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold title-font mb-3">Game Title Here</h3>
+                    <p class="text-blue-400 text-sm mb-4">Genre • Year</p>
+                    <p class="text-zinc-400 leading-relaxed">
+                        Short description about the project. What you made, features, and any cool facts.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Add more projects by copying the block above -->
+
+        </div>
+    </div>
 
 </body>
 </html>
