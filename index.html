@@ -7,392 +7,148 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
         
-        :root {
-            --roblox-green: #00ff9d;
-        }
+        :root { --roblox-green: #00ff9d; }
         
-        * {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        * { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-        }
-        
-        .title-font {
-            font-family: 'Space Grotesk', sans-serif;
-        }
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .title-font { font-family: 'Space Grotesk', sans-serif; }
 
-        .hero-bg {
-            background: radial-gradient(at center bottom, rgba(0, 255, 157, 0.15) 0%, transparent 50%);
-        }
-
-        .nav-link {
-            position: relative;
+        .project-img {
+            height: 260px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
         }
         
-        .nav-link:after {
-            content: '';
+        .project-card:hover .project-img {
+            transform: scale(1.08);
+        }
+        
+        .project-overlay {
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: var(--roblox-green);
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            opacity: 0;
         }
         
-        .nav-link:hover:after {
-            width: 100%;
-        }
-
-        .project-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        .project-card:hover .project-overlay {
+            opacity: 1;
         }
         
-        .project-card:hover {
-            transform: translateY(-20px) rotate(2deg);
-            box-shadow: 0 25px 50px -12px rgb(0 255 157 / 0.25);
-        }
-
-        .custom-cursor {
-            position: fixed;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #00ff9d;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            display: none;
-        }
-
-        .cursor-dot {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: #00ff9d;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            display: none;
-        }
-
-        .section-header {
-            position: relative;
-        }
-        
-        .section-header:after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(to right, #00ff9d, transparent);
-            bottom: -8px;
-            left: 0;
-        }
-
-        .glow-text {
-            text-shadow: 0 0 30px rgb(0 255 157);
-        }
+        .glow-text { text-shadow: 0 0 30px rgb(0 255 157); }
     </style>
 </head>
 <body class="bg-zinc-950 text-white overflow-x-hidden">
-    <!-- Custom Cursor -->
-    <div id="custom-cursor" class="custom-cursor hidden md:block"></div>
-    <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl">
-        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-emerald-500 rounded-xl flex items-center justify-center text-xl font-bold">V</div>
-                <h1 class="title-font text-3xl font-semibold tracking-tighter">01nm</h1>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
-                <a href="#" class="nav-link text-zinc-400 hover:text-white">HOME</a>
-                <a href="#projects" class="nav-link text-zinc-400 hover:text-white">PROJECTS</a>
-                <a href="#about" class="nav-link text-zinc-400 hover:text-white">ABOUT</a>
-                <a href="#experience" class="nav-link text-zinc-400 hover:text-white">EXPERIENCE</a>
-                <a href="#contact" class="nav-link text-zinc-400 hover:text-white">CONTACT</a>
-            </div>
+    <!-- (Your existing Navbar + Hero + About + Skills + Footer remain the same) -->
+    <!-- ... [Keep everything from your previous code until Projects section] ... -->
 
-            <a href="#contact" 
-               class="px-6 py-3 bg-white text-black font-semibold rounded-2xl flex items-center gap-2 hover:bg-emerald-400 hover:text-white group">
-                <span>LET'S BUILD</span>
-                <i class="fa-solid fa-arrow-right group-active:rotate-45"></i>
-            </a>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero-bg min-h-screen flex items-center relative pt-20">
-        <div class="absolute inset-0 bg-[radial-gradient(#00ff9d_1px,transparent_1px)] [background-size:50px_50px] opacity-5"></div>
-        
-        <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8 pt-12">
-                <div class="inline-flex items-center gap-2 px-5 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl text-sm">
-                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                    AVAILABLE FOR COLLABS
-                </div>
-                
-                <h1 class="title-font text-7xl md:text-8xl font-bold leading-none tracking-tighter glow-text">
-                    I CRAFT<br>ROBLOX<br>EXPERIENCES
-                </h1>
-                
-                <p class="text-xl text-zinc-400 max-w-lg">
-                    Full-stack Roblox developer turning bold ideas into immersive 3D worlds. 
-                    4+ years • 2.3M+ visits across experiences.
-                </p>
-                
-                <div class="flex items-center gap-5">
-                    <a href="#projects" 
-                       class="px-8 py-5 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-lg rounded-3xl flex items-center gap-3 group">
-                        VIEW PROJECTS
-                        <i class="fa-solid fa-arrow-down group-active:translate-y-1"></i>
-                    </a>
-                    
-                    <a href="https://www.roblox.com/users/USERID/profile" target="_blank"
-                       class="px-8 py-5 border border-white/30 hover:border-white/60 font-medium rounded-3xl flex items-center gap-3">
-                        <i class="fa-brands fa-roblox text-2xl"></i>
-                        <span>ROBLOX PROFILE</span>
-                    </a>
-                </div>
-                
-                <div class="flex items-center gap-12 pt-8">
-                    <div>
-                        <div class="text-4xl font-semibold text-emerald-400">23</div>
-                        <div class="text-zinc-500 text-sm">EXPERIENCES</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-semibold text-emerald-400">2.3M</div>
-                        <div class="text-zinc-500 text-sm">TOTAL VISITS</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-semibold text-emerald-400">14</div>
-                        <div class="text-zinc-500 text-sm">GROUP PARTNERS</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Hero Visual -->
-            <div class="relative hidden md:flex justify-center">
-                <div class="relative w-[420px] h-[520px]">
-                    <!-- Floating Roblox-style avatar / 3D mock -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent rounded-[4rem] rotate-12 backdrop-blur-3xl border border-white/10"></div>
-                    
-                    <div id="hero-model" 
-                         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-zinc-900 rounded-3xl border-4 border-emerald-400 shadow-2xl overflow-hidden">
-                        <div class="w-full h-full bg-[linear-gradient(45deg,#111_25%,#1a1a1a_25%,#1a1a1a_50%,#111_50%,#111_75%,#1a1a1a_75%)] bg-[length:60px_60px] flex items-center justify-center">
-                            <div class="text-center">
-                                <i class="fa-brands fa-roblox text-[180px] text-emerald-500/30"></i>
-                                <div class="text-emerald-400 text-2xl font-bold title-font tracking-widest mt-4"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Orbiting badges -->
-                    <div class="absolute -top-6 -right-6 bg-zinc-900 border border-emerald-400 text-emerald-400 text-sm font-mono px-6 py-3 rounded-2xl rotate-12 shadow-xl">
-                        ★ TOP 5% DEV
-                    </div>
-                    <div class="absolute -bottom-8 -left-8 bg-zinc-900 border border-white/30 text-xs px-5 py-2.5 rounded-2xl backdrop-blur">
-                        UI • UX • SCRIPTING • 3D
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-12 left-1/2 flex flex-col items-center gap-2 text-xs tracking-widest text-zinc-500">
-            <div>SCROLL TO EXPLORE</div>
-            <div class="w-px h-12 bg-gradient-to-b from-transparent via-zinc-400 to-transparent"></div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="py-32 border-t border-white/10">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="grid md:grid-cols-12 gap-20 items-center">
-                <div class="md:col-span-5">
-                    <h2 class="section-header text-6xl title-font font-semibold tracking-tighter mb-8">Hi, I'm 01NM.</h2>
-                    <div class="space-y-6 text-lg text-zinc-400">
-                        <p>Passionate Roblox developer with a love for creating unforgettable player experiences. From fast-paced obbies to immersive RPGs, I bring worlds to life with clean, optimized code and stunning visuals.</p>
-                        <p>Currently building next-gen experiences using Luau, Blender, and advanced Roblox systems (DataStores, MessagingService, etc.).</p>
-                    </div>
-                    
-                    <div class="mt-12 flex gap-8">
-                        <div class="flex items-center gap-4">
-                            <div class="text-5xl font-mono font-bold text-emerald-400">4</div>
-                            <div class="text-sm leading-tight">
-                                YEARS<br>
-                                <span class="text-zinc-500">EXPERIENCE</span>
-                            </div>
-                        </div>
-                        <div class="h-12 w-px bg-white/10"></div>
-                        <div>
-                            <a href="#" class="group flex items-center gap-3 text-emerald-400 hover:text-emerald-300">
-                                <span class="text-xl">Download Resume</span>
-                                <i class="fa-solid fa-download group-hover:-translate-y-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="md:col-span-7">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-zinc-900/50 p-8 rounded-3xl border border-white/5">
-                            <div class="text-emerald-400 mb-4">
-                                <i class="fa-solid fa-bolt text-4xl"></i>
-                            </div>
-                            <h4 class="text-2xl font-semibold mb-2">Performance First</h4>
-                            <p class="text-zinc-400">Optimized experiences running at 60 FPS even on low-end devices.</p>
-                        </div>
-                        <div class="bg-zinc-900/50 p-8 rounded-3xl border border-white/5">
-                            <div class="text-emerald-400 mb-4">
-                                <i class="fa-solid fa-users text-4xl"></i>
-                            </div>
-                            <h4 class="text-2xl font-semibold mb-2">Community Driven</h4>
-                            <p class="text-zinc-400">Every project is tested with real players for maximum engagement.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
+    <!-- ====================== UPDATED PROJECTS SECTION ====================== -->
     <section id="projects" class="py-32 bg-black">
         <div class="max-w-screen-2xl mx-auto px-8">
             <div class="flex justify-between items-end mb-16">
                 <h2 class="section-header text-6xl title-font font-semibold tracking-tighter">Featured Projects</h2>
                 <a href="#" class="flex items-center gap-3 text-emerald-400 hover:text-white group text-lg">
-                    SEE ALL WORK 
-                    <span class="text-2xl group-hover:translate-x-2">→</span>
+                    SEE ALL WORK <span class="text-2xl group-hover:translate-x-2">→</span>
                 </a>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
+                
                 <!-- Project 1 -->
                 <div class="project-card group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5">
-                    <div class="h-64 bg-gradient-to-br from-violet-500 to-fuchsia-500 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-8xl opacity-30">🌌</div>
+                    <div class="relative overflow-hidden">
+                        <img src="https://via.placeholder.com/800x500/4f46e5/ffffff?text=PROJECT+1" 
+                             alt="NEXUS: 01nm Realms" 
+                             class="project-img w-full">
+                        <div class="project-overlay"></div>
                         <div class="absolute top-6 right-6 px-4 py-1 bg-black/70 text-xs font-mono rounded-full">2025</div>
                     </div>
+                    
                     <div class="p-8">
-                        <div class="font-mono text-emerald-400 text-sm mb-2">SIMULATION • RPG</div>
+                        <div class="font-mono text-emerald-400 text-sm mb-2">OPEN WORLD • RPG</div>
                         <h3 class="text-3xl font-semibold title-font mb-3">NEXUS: 01nm Realms</h3>
-                        <p class="text-zinc-400 line-clamp-3">Massive open-world exploration experience with dynamic weather, player housing, and deep progression systems.</p>
-                        <div class="mt-8 flex justify-between items-center">
-                            <div class="text-sm text-zinc-500">1.2M Visits</div>
-                            <button onclick="alert('Project opened in new tab (demo)')" 
-                                    class="text-xs px-6 py-3 border border-emerald-400/30 hover:border-emerald-400 rounded-2xl">PLAY NOW →</button>
+                        <p class="text-zinc-400 line-clamp-3 mb-6">
+                            Massive open-world exploration experience with dynamic weather, player housing, and deep progression systems.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="text-sm text-zinc-500">1.2M Visits</div>
+                            </div>
+                            <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
+                               class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-2xl text-sm">
+                                PLAY NOW →
+                            </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 2 -->
                 <div class="project-card group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5">
-                    <div class="h-64 bg-gradient-to-br from-amber-500 to-red-500 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-8xl opacity-30">🏎️</div>
+                    <div class="relative overflow-hidden">
+                        <img src="https://via.placeholder.com/800x500/f59e0b/ffffff?text=PROJECT+2" 
+                             alt="NEON DRIFT" 
+                             class="project-img w-full">
+                        <div class="project-overlay"></div>
                         <div class="absolute top-6 right-6 px-4 py-1 bg-black/70 text-xs font-mono rounded-full">2024</div>
                     </div>
+                    
                     <div class="p-8">
                         <div class="font-mono text-emerald-400 text-sm mb-2">RACING • MULTIPLAYER</div>
                         <h3 class="text-3xl font-semibold title-font mb-3">NEON DRIFT</h3>
-                        <p class="text-zinc-400 line-clamp-3">High-speed futuristic racing with custom vehicles, leaderboards, and seasonal events.</p>
-                        <div class="mt-8 flex justify-between items-center">
-                            <div class="text-sm text-zinc-500">680K Visits</div>
-                            <button onclick="alert('Project opened in new tab (demo)')" 
-                                    class="text-xs px-6 py-3 border border-emerald-400/30 hover:border-emerald-400 rounded-2xl">PLAY NOW →</button>
+                        <p class="text-zinc-400 line-clamp-3 mb-6">
+                            High-speed futuristic racing with custom vehicles, leaderboards, and seasonal events.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="text-sm text-zinc-500">680K Visits</div>
+                            </div>
+                            <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
+                               class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-2xl text-sm">
+                                PLAY NOW →
+                            </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 3 -->
                 <div class="project-card group bg-zinc-900 rounded-3xl overflow-hidden border border-white/5">
-                    <div class="h-64 bg-gradient-to-br from-cyan-500 to-blue-600 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-8xl opacity-30">⚔️</div>
+                    <div class="relative overflow-hidden">
+                        <img src="https://via.placeholder.com/800x500/06b67f/ffffff?text=PROJECT+3" 
+                             alt="SHADOW FORGE" 
+                             class="project-img w-full">
+                        <div class="project-overlay"></div>
                         <div class="absolute top-6 right-6 px-4 py-1 bg-black/70 text-xs font-mono rounded-full">2025</div>
                     </div>
+                    
                     <div class="p-8">
-                        <div class="font-mono text-emerald-400 text-sm mb-2">COMBAT • TYCOON</div>
+                        <div class="font-mono text-emerald-400 text-sm mb-2">TYCOON • COMBAT</div>
                         <h3 class="text-3xl font-semibold title-font mb-3">SHADOW FORGE</h3>
-                        <p class="text-zinc-400 line-clamp-3">Tycoon + PvP arena hybrid with weapon crafting and clan warfare.</p>
-                        <div class="mt-8 flex justify-between items-center">
-                            <div class="text-sm text-zinc-500">410K Visits</div>
-                            <button onclick="alert('Project opened in new tab (demo)')" 
-                                    class="text-xs px-6 py-3 border border-emerald-400/30 hover:border-emerald-400 rounded-2xl">PLAY NOW →</button>
+                        <p class="text-zinc-400 line-clamp-3 mb-6">
+                            Tycoon + PvP arena hybrid with weapon crafting and clan warfare.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="text-sm text-zinc-500">410K Visits</div>
+                            </div>
+                            <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
+                               class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-2xl text-sm">
+                                PLAY NOW →
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Skills -->
-    <section class="py-32">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <h2 class="text-center text-5xl title-font font-semibold mb-20">Tools &amp; Expertise</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-                <div class="text-center p-8 rounded-3xl hover:bg-white/5 group">
-                    <div class="text-6xl mb-6">📜</div>
-                    <h4 class="font-semibold text-2xl mb-1">Luau</h4>
-                    <p class="text-emerald-400">Expert</p>
-                </div>
-                <div class="text-center p-8 rounded-3xl hover:bg-white/5 group">
-                    <div class="text-6xl mb-6">🎨</div>
-                    <h4 class="font-semibold text-2xl mb-1">Blender / Studio</h4>
-                    <p class="text-emerald-400">Advanced</p>
-                </div>
-                <div class="text-center p-8 rounded-3xl hover:bg-white/5 group">
-                    <div class="text-6xl mb-6">🗄️</div>
-                    <h4 class="font-semibold text-2xl mb-1">Data Systems</h4>
-                    <p class="text-emerald-400">Master</p>
-                </div>
-                <div class="text-center p-8 rounded-3xl hover:bg-white/5 group">
-                    <div class="text-6xl mb-6">🌐</div>
-                    <h4 class="font-semibold text-2xl mb-1">UI/UX</h4>
-                    <p class="text-emerald-400">Expert</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer / Contact -->
-    <footer id="contact" class="bg-black border-t border-white/10 py-24">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="grid md:grid-cols-2 gap-16">
-                <div>
-                    <h2 class="title-font text-6xl font-bold tracking-tighter">Let's create<br>something legendary.</h2>
-                    <a href="mailto:your.email@01nm.dev" 
-                       class="inline-block mt-10 text-3xl text-emerald-400 hover:text-white">your.email@01nm.dev</a>
-                </div>
-                
-                <div class="flex flex-col justify-between">
-                    <div class="flex gap-8 text-4xl">
-                        <a href="#" class="hover:text-emerald-400"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" class="hover:text-emerald-400"><i class="fa-brands fa-discord"></i></a>
-                        <a href="#" class="hover:text-emerald-400"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                    
-                    <div class="text-zinc-500 text-sm mt-12 md:mt-0">
-                        © 2026 01nm • Roblox Portfolio Demo<br>
-                        Built as a single-file HTML showcase
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Rest of your page (Skills + Footer) remains the same -->
+    
     <script>
-        // Tailwind script already loaded via CDN
-        
-        // Custom Cursor
+        // === Your existing script (cursor, hero animation, smooth scroll, etc.) ===
         const cursor = document.getElementById('custom-cursor');
         const dot = document.getElementById('cursor-dot');
         
@@ -403,67 +159,32 @@
             document.addEventListener('mousemove', (e) => {
                 cursor.style.left = e.clientX + 'px';
                 cursor.style.top = e.clientY + 'px';
-                
                 dot.style.left = e.clientX + 'px';
                 dot.style.top = e.clientY + 'px';
             });
-            
-            // Hover effect on links and buttons
-            const hoverables = document.querySelectorAll('a, button');
-            hoverables.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.style.transform = 'scale(1.8)';
-                    cursor.style.borderColor = '#ffffff';
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursor.style.transform = 'scale(1)';
-                    cursor.style.borderColor = '#00ff9d';
-                });
-            });
         }
-        
-        // Hero model subtle animation
+
+        // Hero model animation
         const heroModel = document.getElementById('hero-model');
         let angle = 0;
-        
         setInterval(() => {
-            angle += 0.3;
+            angle += 0.4;
             heroModel.style.transform = `translate(-50%, -50%) rotateX(12deg) rotateY(${angle}deg)`;
         }, 50);
-        
-        // Smooth scroll for anchor links
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href') !== '#') {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
-        
-        // Intersection Observer for fade-ins
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.project-card, section > div').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(40px)';
-            observer.observe(section);
-        });
-        
-        console.log('%c✅ 01nm Roblox Portfolio loaded successfully', 'color:#00ff9d; font-family:monospace');
+
+        console.log('%c✅ 01NM Roblox Portfolio loaded successfully', 'color:#00ff9d; font-family:monospace');
     </script>
 </body>
 </html>
