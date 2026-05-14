@@ -3,147 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect | Builds</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Past Work • 01NM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
         :root {
-            --bg-color: #050505;
-            --glass-bg: rgba(15, 15, 15, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --accent: #ffffff;
-            --sub-text: #777777;
-        }
-
-        @keyframes PageFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-        body, html { margin: 0; padding: 0; width: 100%; min-height: 100%; background-color: var(--bg-color); color: #ffffff; font-family: 'Lexend', sans-serif; overflow-x: hidden; }
-        #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-
-        .top-nav { position: fixed; top: 2rem; right: 2rem; display: flex; gap: 1rem; z-index: 100; animation: PageFadeIn 1.2s ease; }
-        .nav-item { text-decoration: none; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-weight: 500; padding: 0.7rem 1.4rem; border-radius: 14px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border); backdrop-filter: blur(12px); transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .nav-item.active { color: #fff; border-color: rgba(255, 255, 255, 0.3); }
-
-        .container { display: flex; justify-content: center; padding: 6rem 2rem; position: relative; z-index: 10; }
-        .glass-card { background: var(--glass-bg); backdrop-filter: blur(40px); border: 1px solid var(--glass-border); border-radius: 32px; padding: 4rem 3rem; width: 100%; max-width: 800px; animation: PageFadeIn 0.8s ease; }
-
-        .category-nav { display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 4rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1.5rem; }
-        .cat-btn { background: none; border: none; color: var(--sub-text); cursor: pointer; font-weight: 500; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; transition: 0.3s; font-family: 'Lexend', sans-serif; }
-        .cat-btn:hover, .cat-btn.active { color: var(--accent); }
-
-        .section { display: none; animation: PageFadeIn 0.5s ease forwards; }
-        .section.active { display: block; }
-
-        .grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-        .build-item { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--glass-border); border-radius: 24px; padding: 1.5rem; transition: 0.4s; }
-        .build-item:hover { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-5px); }
-        
-        /* Fixed Image Styling */
-        .build-img { 
-            width: 100%; 
-            aspect-ratio: 16/9; 
-            object-fit: cover; 
-            border-radius: 16px; 
-            margin-bottom: 1.5rem; 
-            border: 1px solid var(--glass-border);
-            background: rgba(255,255,255,0.02);
+            --primary-blue: #1E90FF;
+            --blue-glow: #00B4FF;
         }
         
-        h2 { text-align: center; margin: 0 0 0.5rem 0; font-size: 2.2rem; font-weight: 700; letter-spacing: -1px; }
-        h3 { margin: 0 0 0.5rem 0; font-size: 1.2rem; font-weight: 500; }
-        p.desc { margin: 0; font-size: 0.85rem; color: var(--sub-text); line-height: 1.6; font-weight: 300; }
+        * { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .title-font { font-family: 'Space Grotesk', sans-serif; }
 
-        footer { text-align: center; margin-top: 5rem; font-size: 0.6rem; color: var(--sub-text); opacity: 0.4; letter-spacing: 3px; font-weight: 300; }
+        .project-card {
+            background: #18181b;
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+            border-radius: 24px;
+        }
+        
+        .project-img {
+            height: 320px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.08);
+        }
+        
+        .glow-blue { text-shadow: 0 0 25px var(--blue-glow); }
     </style>
 </head>
-<body>
-    <nav class="top-nav">
-        <a href="index.html" class="nav-item">Home</a>
-        <a href="builds.html" class="nav-item active">Builds</a>
+<body class="bg-zinc-950 text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-blue-500 rounded-xl flex items-center justify-center text-xl font-bold">01</div>
+                <h1 class="title-font text-3xl font-semibold tracking-tighter">01NM</h1>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="index.html" class="nav-link text-zinc-400 hover:text-white">HOME</a>
+                <a href="build.html" class="nav-link text-blue-400 font-semibold">PAST WORK</a>
+                <a href="index.html#about" class="nav-link text-zinc-400 hover:text-white">ABOUT</a>
+                <a href="index.html#contact" class="nav-link text-zinc-400 hover:text-white">CONTACT</a>
+            </div>
+
+            <a href="index.html#contact" 
+               class="px-6 py-3 bg-white text-black font-semibold rounded-2xl hover:bg-blue-400 hover:text-white">
+                LET'S BUILD
+            </a>
+        </div>
     </nav>
-    <canvas id="particle-canvas"></canvas>
 
-    <div class="container">
-        <main class="glass-card">
-            <h2>Portfolio</h2>
-            <p style="text-align:center; text-transform:uppercase; letter-spacing:6px; font-size:0.6rem; color:var(--sub-text); margin-bottom:3rem; font-weight:300;">Showcase Archive</p>
+    <!-- Header -->
+    <section class="pt-32 pb-20 bg-gradient-to-b from-zinc-900 to-zinc-950">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h1 class="title-font text-6xl md:text-7xl font-bold tracking-tighter text-center glow-blue">
+                PAST WORK
+            </h1>
+            <p class="text-center text-zinc-400 mt-4 text-lg max-w-2xl mx-auto">
+                A collection of Roblox experiences I've built and contributed to over the years.
+            </p>
+        </div>
+    </section>
 
-            <div class="category-nav">
-                <button class="cat-btn active" onclick="showSection('us')">United States</button>
-                <button class="cat-btn" onclick="showSection('uk')">United Kingdom</button>
-                <button class="cat-btn" onclick="showSection('others')">Others</button>
-            </div>
-
-            <!-- US SECTION (3 Rows) -->
-            <div id="us" class="section active">
-                <div class="grid">
-                    <div class="build-item">
-                        <img src="https://media.discordapp.net/attachments/1485721727446159703/1487494623361372190/Screenshot_2026-03-28_141312.png?ex=69c958d2&is=69c80752&hm=2104e111df06c1292786df2045c713c3349679e9f52f1b9f270fafcb27c5bc1e&animated=true" class="build-img" alt="US Build">
-                        <h3>Five Guys</h3>
-                        <p class="desc">Five Guys created for the fun of it by 01NM.</p>
-                    </div>
-                    <div class="build-item">
-                        <img src="https://media.discordapp.net/attachments/1485721727446159703/1487494624930172928/Screenshot_2026-03-28_141355.png?ex=69c958d2&is=69c80752&hm=b3cce6ad3cd0b075ffc41d1cb7a019f85c30fa55efa39f08df10ee81c7110c1c&animated=true" class="build-img" alt="US Build">
-                        <h3>BikeLife Miami</h3>
-                        <p class="desc">A beach harbor area built for Bikelife Miami</p>
-                    </div>
-                    <div class="build-item">
-                        <img src="https://media.discordapp.net/attachments/1485721727446159703/1487494625257197688/Screenshot_2026-03-28_141402.png?ex=69c958d2&is=69c80752&hm=ffbd9556473a15b759fde0c981ced9f79067e8937e6bd9d927c73c7f60f16b4d&animated=true" class="build-img" alt="US Build">
-                        <h3>Bikelife Miami</h3>
-                        <p class="desc">A beach harbor area built for Bikelife Miami</p>
+    <!-- Projects Grid -->
+    <section class="py-20">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="projects-grid">
+                
+                <!-- ==================== PROJECT EXAMPLE 1 ==================== -->
+                <div class="project-card group">
+                    <img src="https://via.placeholder.com/800x500/1e40af/ffffff?text=YOUR+GAME+IMAGE+1" 
+                         class="project-img" alt="Project 1">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-semibold title-font">Nexus Realms</h3>
+                            <span class="text-xs font-mono bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">2025</span>
+                        </div>
+                        <p class="text-blue-400 text-sm mb-3">Open World • RPG • Simulation</p>
+                        <p class="text-zinc-400 line-clamp-4">
+                            Massive open-world exploration game with dynamic weather, player housing, 
+                            and deep progression systems. Over 1.2M visits.
+                        </p>
+                        <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
+                           class="mt-6 inline-flex items-center gap-2 text-blue-400 hover:text-white font-medium">
+                            PLAY EXPERIENCE 
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
 
-            <!-- UK SECTION (6 Rows) -->
-            <div id="uk" class="section">
-                <div class="grid">
-                    <div class="build-item">
-                        <!-- ADD YOUR LINK HERE -->
-                        <img src="https://media.discordapp.net/attachments/1485721727446159703/1487494621964800101/Screenshot_2026-03-28_141243.png?ex=69c958d2&is=69c80752&hm=5f550512ec1978bc151ccdc6f26273b0cfce4c9f06622965b610117ac4404261&animated=true" class="build-img" alt="Flintshire, Wales Building 1">
-                        <h3>Flintshire, Wales - House 1</h3>
-                        <p class="desc">This building was built for a community called Flintshire, Wales.</p>
+                <!-- ==================== PROJECT EXAMPLE 2 ==================== -->
+                <div class="project-card group">
+                    <img src="https://via.placeholder.com/800x500/2563eb/ffffff?text=YOUR+GAME+IMAGE+2" 
+                         class="project-img" alt="Project 2">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-semibold title-font">Neon Drift</h3>
+                            <span class="text-xs font-mono bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">2024</span>
+                        </div>
+                        <p class="text-blue-400 text-sm mb-3">Racing • Multiplayer</p>
+                        <p class="text-zinc-400 line-clamp-4">
+                            High-speed futuristic racing experience with custom vehicles, leaderboards, 
+                            and seasonal events.
+                        </p>
+                        <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
+                           class="mt-6 inline-flex items-center gap-2 text-blue-400 hover:text-white font-medium">
+                            PLAY EXPERIENCE 
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
-                    <!-- Repeat for other 5 items... -->
-                    <div class="build-item"><img src="https://media.discordapp.net/attachments/1485721727446159703/1487494622430101665/Screenshot_2026-03-28_141255.png?ex=69c958d2&is=69c80752&hm=f069213e71592103c572e6a5c2ce7643594b283edc5499b7b86f4c82abe07dc5&animated=true" class="build-img"><h3>Peterborough Train Station</h3><p class="desc">Peterboroughs main train station.</p></div>
-                    <div class="build-item"><img src="https://media.discordapp.net/attachments/1485721727446159703/1487494622899994705/Screenshot_2026-03-28_141303.png?ex=69c958d2&is=69c80752&hm=c9c4ed64e86d98400865ba900513ca98171ee0c5719cc3b3c4d1609b06af47d6&animated=true" class="build-img"><h3>Sleaford Cottage 1</h3><p class="desc">This was made by 01NM (Previously Velcraze) for his product called Sleaford, England.</p></div>
-                    <div class="build-item"><img src="https://media.discordapp.net/attachments/1485721727446159703/1487494623814484148/Screenshot_2026-03-28_141323.png?ex=69c958d2&is=69c80752&hm=e4bd9011b42e07b11ee6e1ba116e870aa91d9c7b2b242302d1262f53cf5df026&animated=true" class="build-img"><h3>Railway Bridge</h3><p class="desc">Old, green railway tracks going over a B-Road in sleaford.</p></div>
-                    <div class="build-item"><img src="https://media.discordapp.net/attachments/1485721727446159703/1487494624112283679/Screenshot_2026-03-28_141332.png?ex=69c958d2&is=69c80752&hm=515cdbb2c588d04170b97c9f81d4ccf78a264e53fd99d34fc4bd4081957aca74&animated=true" class="build-img"><h3>Sleaford Cottage 2</h3><p class="desc">Cottage located in Sleaford, England. Made by 01NM</p></div>
-                    <div class="build-item"><img src="https://media.discordapp.net/attachments/1485721727446159703/1487494624468668508/Screenshot_2026-03-28_141344.png?ex=69c958d2&is=69c80752&hm=d80ceb0bcf85985b7b8de0b14c2075f207201579831e0b3063c3497dffdaca40&animated=true" class="build-img"><h3>Dual Carriageway located in sleaford.</h3><p class="desc">Dual Carriageway located in sleaford.</p></div>
-
                 </div>
-            </div>
 
-            <!-- OTHERS SECTION (2 Rows) -->
-            <div id="others" class="section">
-                <div class="grid">
-                    <div class="build-item"><img src="LINK" class="build-img"><h3>Cyberpunk Alley</h3><p class="desc">Neon-focused environment.</p></div>
-                    <div class="build-item"><img src="LINK" class="build-img"><h3>Sci-Fi Laboratory</h3><p class="desc">Clean, white minimalist interior.</p></div>
+                <!-- ==================== PROJECT EXAMPLE 3 ==================== -->
+                <div class="project-card group">
+                    <img src="https://via.placeholder.com/800x500/3b82f6/ffffff?text=YOUR+GAME+IMAGE+3" 
+                         class="project-img" alt="Project 3">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-semibold title-font">Shadow Forge</h3>
+                            <span class="text-xs font-mono bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">2025</span>
+                        </div>
+                        <p class="text-blue-400 text-sm mb-3">Tycoon • Combat • PvP</p>
+                        <p class="text-zinc-400 line-clamp-4">
+                            Tycoon combined with PvP arena. Features weapon crafting, clan systems, and intense combat.
+                        </p>
+                        <a href="https://www.roblox.com/games/YOURGAMEID" target="_blank"
+                           class="mt-6 inline-flex items-center gap-2 text-blue-400 hover:text-white font-medium">
+                            PLAY EXPERIENCE 
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <footer>DATABASE ACCESS 2026</footer>
-        </main>
-    </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-16 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center text-zinc-500">
+            © 2026 01NM • Roblox Developer Portfolio
+        </div>
+    </footer>
 
     <script>
-        function showSection(id) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
+        // Optional: Simple fade-in animation for cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
 
-        const canvas = document.getElementById('particle-canvas'); const ctx = canvas.getContext('2d'); let particles = [];
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; init(); }
-        window.addEventListener('resize', resize); resize();
-        class Particle {
-            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 1.2 + 0.5; this.speedX = (Math.random() - 0.5) * 0.2; this.speedY = (Math.random() - 0.5) * 0.2; }
-            update() { this.x += this.speedX; this.y += this.speedY; if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width; if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height; }
-            draw() { ctx.fillStyle = 'rgba(255, 255, 255, 0.15)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
-        }
-        function init() { particles = []; let q = (canvas.width * canvas.height) / 12000; for (let i = 0; i < q; i++) { particles.push(new Particle()); } }
-        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); for (let i = 0; i < particles.length; i++) { particles[i].update(); particles[i].draw(); for (let j = i; j < particles.length; j++) { const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y; const dist = Math.sqrt(dx * dx + dy * dy); if (dist < 120) { ctx.strokeStyle = `rgba(255, 255, 255, ${0.05 * (1 - dist/120)})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); } } } requestAnimationFrame(animate); }
-        animate();
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            observer.observe(card);
+        });
+
+        console.log('%c✅ Past Work Page Loaded Successfully', 'color:#1E90FF; font-family:monospace');
     </script>
 </body>
 </html>
