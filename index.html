@@ -1,91 +1,318 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardiff, Caerdydd | Roblox Roleplay</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Cardiff, Caerdydd Roleplay</title>
     <style>
-        body {
-            font-family: 'Lexend', system-ui, sans-serif;
-        }
-        
-        .title-font {
-            font-family: 'Lexend', sans-serif;
-            font-weight: 700;
+        :root {
+            --bg-dark: #0f1115;
+            --bg-card: #161920;
+            --accent-red: #8B0000;
+            --accent-red-hover: #A50000;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --border-color: #27272a;
         }
 
-        .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), 
-                        url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat;
-            background-attachment: fixed;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(15, 17, 21, 0.95);
+            border-bottom: 2px solid var(--accent-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-badge {
+            background-color: var(--accent-red);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        .search-box input {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: white;
+            outline: none;
+            width: 200px;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(15, 17, 21, 1)), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 100px 5% 80px 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 450px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--accent-red);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: background-color 0.2s, transform 0.1s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-red-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content Grid */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.2fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-red);
+            padding-left: 12px;
+        }
+
+        /* Rules List */
+        .rules-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .rules-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rules-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .rules-list a:hover {
+            color: var(--text-main);
+        }
+
+        /* Latest Updates & News Card */
+        .update-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .update-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .update-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-dark);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
         }
     </style>
 </head>
-<body class="bg-zinc-950 text-white overflow-x-hidden">
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <!-- Replace with your transparent dragon logo -->
-                <img src="https://i.imgur.com/your-dragon-logo.png" 
-                     alt="Cardiff Dragon" 
-                     class="h-12 w-auto">
-                <div class="title-font text-3xl tracking-[-2px]">
-                    CARDIFF, <span class="text-red-600">CAERDYDD</span>
-                </div>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-9 text-sm font-medium tracking-wide">
-                <a href="#" class="hover:text-red-400 transition-colors">HOME</a>
-                <a href="#info" class="hover:text-red-400 transition-colors">SERVER INFO</a>
-                <a href="#rules" class="hover:text-red-400 transition-colors">RULES</a>
-                <a href="#gallery" class="hover:text-red-400 transition-colors">GALLERY</a>
-            </div>
+<body>
 
-            <a href="https://www.roblox.com/games/..." 
-               target="_blank"
-               class="bg-red-600 hover:bg-red-700 px-9 py-3.5 rounded-2xl font-semibold text-sm tracking-wider transition-all">
-                JOIN THE SERVER
-            </a>
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo-area">
+            <span class="logo-badge">CY</span>
+            <span>Cardiff, Caerdydd</span>
         </div>
-    </nav>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Rules</a></li>
+                <li><a href="#">Lore</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Player Dashboard</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+        </div>
+    </header>
 
-    <!-- HERO - Easy to change background -->
-    <section class="hero-bg min-h-screen flex items-center pt-20 relative">
-        <!-- Replace the URL below with your own blurred background image -->
-        <div class="absolute inset-0 bg-cover bg-center" 
-             style="background-image: url('https://picsum.photos/id/1015/1920/1080'); filter: blur(4px); opacity: 0.4; z-index: -1;"></div>
-        
-        <div class="max-w-7xl mx-auto px-8 py-24 relative z-10">
-            <div class="max-w-2xl">
-                <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2.5 rounded-3xl text-sm mb-8 border border-white/20">
-                    <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                    OFFICIAL ROLEPLAY SERVER
-                </div>
-                
-                <h1 class="title-font text-6xl md:text-7xl font-bold leading-none tracking-tighter mb-6">
-                    CARDIFF,<br>CAERDYDD
-                </h1>
-                
-                <p class="text-lg text-gray-300 mb-12 max-w-md">
-                    A professional and immersive roleplay experience set in the capital city of Wales.
-                </p>
-
-                <a href="https://www.roblox.com/games/..." 
-                   target="_blank"
-                   class="inline-flex items-center bg-red-600 hover:bg-red-700 px-10 py-4 rounded-3xl font-semibold text-lg transition-all">
-                    <i class="fa-solid fa-gamepad mr-3"></i>
-                    JOIN SERVER
-                </a>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Cardiff, Caerdydd Roleplay</h1>
+        <p>Immersive UK Roleplay in the Heart of Wales</p>
+        <div>
+            <a href="#" class="btn">Join the Adventure</a>
         </div>
     </section>
 
-    <footer class="bg-black py-16 text-center text-xs text-gray-500 border-t border-white/5">
-        © 2026 Cardiff, Caerdydd • Roblox Roleplay Community
+    <!-- Content Sections -->
+    <div class="container">
+        <!-- Welcome Section -->
+        <div class="card">
+            <h2>Welcome to Cardiff</h2>
+            <p>Welcome to Cardiff Roleplay! Experience an authentic UK environment set right in the capital of Wales. Dive deep into character development, dynamic economy systems, and active emergency services.</p>
+            <p style="margin-top: 15px;">Whether you want to uphold the law, run a business, or create your own path, Cardiff offers endless possibilities for dedicated roleplayers.</p>
+        </div>
+
+        <!-- Rules & Regulations Section -->
+        <div class="card">
+            <h2>Rules & Regulations</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Please review our essential server guidelines before joining:</p>
+            <ul class="rules-list">
+                <li><a href="#">1. Code of Conduct & General Behavior</a></li>
+                <li><a href="#">2. Roleplay Etiquette & FearRP</a></li>
+                <li><a href="#">3. Server Laws & Criminal Activity</a></li>
+                <li><a href="#">4. Staff Requests & Tickets</a></li>
+                <li><a href="#">5. Emergency Services Guidelines</a></li>
+            </ul>
+        </div>
+
+        <!-- Latest Updates Section (Customisable Image & Text) -->
+        <div class="card">
+            <h2>Latest Updates & News</h2>
+            <!-- You can change the 'src' link to your own custom image URL -->
+            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80" alt="Update Banner" class="update-img">
+            
+            <!-- Customisable text area below the image -->
+            <div class="update-title">Major Update v3.1: Emergency Services Overhaul</div>
+            <div class="update-desc">Read about the new vehicle fleet, updated protocols, and how it affects your roleplay moving forward in Cardiff.</div>
+            
+            <a href="#" class="btn" style="padding: 8px 16px; font-size: 0.9rem;">Read Full Update</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div>&copy; 2026 Cardiff, Caerdydd. All rights reserved.</div>
+        <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Discord</a>
+        </div>
     </footer>
+
 </body>
 </html>
