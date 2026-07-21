@@ -93,12 +93,14 @@
         /* Hero Section */
         .hero {
             position: relative;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(15, 17, 21, 1)), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            padding: 100px 5% 80px 5%;
+            /* New background image referenced here */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(15, 17, 21, 0.9)), url('image_d6f194.jpg') center/cover no-repeat;
+            padding: 150px 5% 120px 5%; /* Increased top/bottom padding for better visibility of the street scene */
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            min-height: 450px;
+            justify-content: flex-end; /* Aligns content to the bottom of the hero */
+            min-height: 550px; /* Increased min-height */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6); /* Added text shadow for better readability over the scene */
         }
 
         .hero h1 {
@@ -259,7 +261,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with new background image -->
     <section class="hero">
         <h1>Cardiff, Caerdydd Roleplay</h1>
         <p>Immersive UK Roleplay in the Heart of Wales</p>
