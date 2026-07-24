@@ -22,7 +22,7 @@
         .hero {
             position: relative;
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            height: 550px;
+            height: 620px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -53,10 +53,12 @@
         }
 
         .search-container {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 500px;
             width: 100%;
             position: relative;
+            margin-left: 0;
+            margin-top: auto;
+            margin-bottom: 90px;
         }
 
         .search-bar {
@@ -78,13 +80,13 @@
             cursor: pointer;
         }
 
-        /* Action Cards Row */
+        /* Action Cards Row Overlapping Hero */
         .action-row {
             display: flex;
             justify-content: center;
             gap: 4px;
             max-width: 1200px;
-            margin: -50px auto 40px auto;
+            margin: -70px auto 40px auto;
             padding: 0 20px;
             position: relative;
             z-index: 10;
@@ -360,7 +362,6 @@
     <div class="hero">
         <div class="hero-top">
             <div class="logo-area">
-                <!-- Heddlu South Wales Police Logo Image -->
                 <img src="https://www.south-wales.police.uk/SysSiteAssets/media/images/south-wales/swp-logo-white.png" alt="Heddlu De Cymru South Wales Police Logo">
             </div>
             <button class="lang-btn">Cymraeg</button>
@@ -370,7 +371,6 @@
             <input type="text" class="search-bar" placeholder="Search">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
-        <div></div>
     </div>
 
     <!-- Action Cards -->
