@@ -33,23 +33,13 @@
         .hero-top {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-area i {
-            font-size: 35px;
-        }
-
-        .logo-text {
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 1.2;
+        .logo-area img {
+            height: 55px;
+            width: auto;
+            display: block;
         }
 
         .lang-btn {
@@ -88,7 +78,7 @@
             cursor: pointer;
         }
 
-        /* Action Cards Row 1 */
+        /* Action Cards Row */
         .action-row {
             display: flex;
             justify-content: center;
@@ -153,7 +143,7 @@
             line-height: 1.5;
         }
 
-        /* Grid Section (Similar to Image 2) */
+        /* Grid Section */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -346,7 +336,7 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-180px); /* Moves exactly 3 items worth of width (3 * 60px) */
+                transform: translateX(-180px);
             }
         }
 
@@ -370,10 +360,8 @@
     <div class="hero">
         <div class="hero-top">
             <div class="logo-area">
-                <i class="fa-solid fa-shield-halved"></i>
-                <div class="logo-text">
-                    HEDDLU<br>DE CYMRU<br>SOUTH WALES<br>POLICE
-                </div>
+                <!-- Heddlu South Wales Police Logo Image -->
+                <img src="https://www.south-wales.police.uk/SysSiteAssets/media/images/south-wales/swp-logo-white.png" alt="Heddlu De Cymru South Wales Police Logo">
             </div>
             <button class="lang-btn">Cymraeg</button>
         </div>
@@ -585,11 +573,9 @@
                 <span>Follow us on</span>
                 <div class="ticker-wrapper">
                     <div class="ticker-track">
-                        <!-- Set 1 -->
                         <div class="ticker-item"><a href="#" class="discord" title="Discord"><i class="fa-brands fa-discord"></i></a></div>
                         <div class="ticker-item"><a href="#" class="tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a></div>
                         <div class="ticker-item"><a href="#" class="roblox" title="Roblox"><i class="fa-solid fa-cube"></i></a></div>
-                        <!-- Duplicate Set for smooth infinite looping effect -->
                         <div class="ticker-item"><a href="#" class="discord" title="Discord"><i class="fa-brands fa-discord"></i></a></div>
                         <div class="ticker-item"><a href="#" class="tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a></div>
                         <div class="ticker-item"><a href="#" class="roblox" title="Roblox"><i class="fa-solid fa-cube"></i></a></div>
